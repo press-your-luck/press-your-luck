@@ -1,6 +1,4 @@
 import axios from "axios";
-const selectQuestion = Math.floor(Math.random() * 17904)
-const triviaUrl = `https://qriusity.com/v1/questions?page=${selectQuestion}&limit=1`
 
 export function addSpin(){
     return {
@@ -23,7 +21,7 @@ export function setQuestion(question){
 
 export function loadQuestion(){
     return (dispatch) =>{
-        axios.get(triviaUrl)
+        axios.get(`https://qriusity.com/v1/questions?page=${Math.floor(Math.random() * 17904)}&limit=1`)
             .then((response) =>{
                 console.log(response);
                 dispatch(setQuestion(response.data[0]))

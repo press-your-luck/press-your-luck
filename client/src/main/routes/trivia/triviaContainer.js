@@ -5,21 +5,26 @@ import { connect } from "react-redux";
 
 class TriviaContainer extends Component {
   componentWillMount() {
-    this.props.loadQuestion()
+    this.props.loadQuestion();
   }
-  handleChoice = (e) => {
-    this.setState({
-      currentChoice: e.target.name
-    })
+  
+  handleRoundChange(){
+    if (this.props.player1.playerReady){
+      this.props.loadQuestion();
+    }
   }
+  
   handleAnswer = (e) => {
     if (this.props.player1.choice == 1) {
       if (e.target.name == this.props.currentQuestion.answers) {
+        alert("correct answer! 1 spin awarded!")
         this.props.addSpin();
         this.props.useChoice();
+        this.handleRoundChange();
       } else {
         console.log("wrong answer!")
         this.props.useChoice();
+        this.handleRoundChange();
       }
     }
     else {
@@ -28,8 +33,6 @@ class TriviaContainer extends Component {
   }
 
   render() {
-    console.log(this.props.player1.choice)
-    console.log(this.props.player1.spins)
     return (
       <TriviaComponent handleAnswer={this.handleAnswer} question={this.props.currentQuestion} />
     );
