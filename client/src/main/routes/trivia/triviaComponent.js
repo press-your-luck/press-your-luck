@@ -5,6 +5,10 @@ class TriviaComponent extends Component {
     return (
       <div>
         <p> {this.props.question.question} </p>
+        <button>{this.props.question.question.option1}</button>
+        <button>{this.props.question.question.option1}</button>
+        <button>{this.props.question.question.option1}</button>
+        <button>{this.props.question.question}</button>
       </div>
     );
   }
