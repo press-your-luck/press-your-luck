@@ -23,7 +23,6 @@ export function loadQuestion(){
     return (dispatch) =>{
         axios.get(`https://qriusity.com/v1/questions?page=${Math.floor(Math.random() * 17904)}&limit=1`)
             .then((response) =>{
-                console.log(response);
                 dispatch(setQuestion(response.data[0]))
             })
             .catch((err) =>{
