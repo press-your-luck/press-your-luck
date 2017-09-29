@@ -4,7 +4,7 @@ class TriviaComponent extends Component {
   render() {
     return (
       <div>
-        
+        <p> {this.props.question.question} </p>
       </div>
     );
   }
