@@ -3,7 +3,7 @@ const passport = require("passport");
 const Strategy = require("passport-local");
 const jwt = require("jsonwebtoken");
 
-const UserModel = require("../models/user");
+const UserModel = require("../models/player.js");
 const config = require("../config");
 
 const authRoute = express.Router();
@@ -81,3 +81,5 @@ authRoute.post("/login", passport.authenticate("local", { session: false }), (re
         }
     })
 });
+
+module.exports = authRoute;

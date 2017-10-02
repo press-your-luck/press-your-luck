@@ -25,5 +25,11 @@ const gameSchema = new Schema({
     }],
     currentQuestion: {
         type: Object
-    }
+    },
+    playersIDs: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "user"
+    }]
 })
+
+module.exports = mongoose.model("game", gameSchema);
