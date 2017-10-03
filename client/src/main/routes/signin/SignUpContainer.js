@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import SignUpComponent from "./SignUpComponent.js"
 import { connect } from "react-redux";
 import { signup } from "../../redux/actions/action"
+import LoginContainer from "../login/LoginContainer"
 
 class SignUpContainer extends Component {
   constructor() {
@@ -34,7 +35,11 @@ class SignUpContainer extends Component {
   render() {
     return (
       <div>
-        <SignUpComponent handleSubmit={this.handleSubmit} handleChange={this.handleChange} {...this.state} />
+        <SignUpComponent 
+        handleSubmit={this.handleSubmit} 
+        handleChange={this.handleChange} 
+        {...this.state} />
+        <LoginContainer />
       </div>
     );
   }
