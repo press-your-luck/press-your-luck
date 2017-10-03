@@ -38,6 +38,8 @@ gameRoute.route("/join/:id")
         })
     })
 
+    gameRoute.route("/startTrivia");
+
 // const getAll = function () {
 //     axios.get(`https://qriusity.com/v1/questions?page=${Math.floor(Math.random() * 17904)}&limit=1`)
 //         .then((response) => {
