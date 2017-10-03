@@ -26,7 +26,7 @@ const gameSchema = new Schema({
     currentQuestion: {
         type: Object
     },
-    playersIDs: [{
+    playerIDs: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: "user"
     }]
