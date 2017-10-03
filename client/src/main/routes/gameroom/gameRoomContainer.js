@@ -4,9 +4,7 @@ import GameRoomComponent from "./gameRoomComponent"
 class GameRoomContainer extends Component {
   render() {
     return (
-      <div>
         <GameRoomComponent />
-      </div>
     );
   }
 }
