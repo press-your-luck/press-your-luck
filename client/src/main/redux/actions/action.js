@@ -21,7 +21,7 @@ export function verifyToken() {
             })
             .catch((err) => {
                 console.error(err);
-                dispatch(authErr({ verify: "Invalid Token" }))
+                dispatch(authError({ verify: "Invalid Token" }));
             })
     }
 }

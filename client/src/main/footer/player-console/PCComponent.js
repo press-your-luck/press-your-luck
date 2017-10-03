@@ -4,7 +4,7 @@ class PCComponent extends Component {
   render() {
     return (
       <div>
-        PC Component
+        Hi, I'm the Player Console!  There shouldn't be anyone here but me!
       </div>
     );
   }
