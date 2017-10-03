@@ -17,7 +17,7 @@ let defaultState = {
         spins: 0,
         choice: 1,        
         playerReady: false
-        },
+        }
 
 }
 
