@@ -1,8 +1,15 @@
 import axios from "axios";
+const authUrl = "http://localhost:9000/auth/"
 
 export function addSpin(){
     return {
         type: "ADD_SPIN"
+    }
+}
+
+export function authErr(){
+    return {
+        type: "AUTH_ERROR"
     }
 }
 
@@ -27,6 +34,27 @@ export function loadQuestion(){
             })
             .catch((err) =>{
                 console.log(err);
+            })
+    }
+}
+
+export function authenticate(isValid, user){
+    return {
+        type: "AUTHENTICATE",
+        isValid,
+        user
+    }
+}
+
+export function signup(credentials){
+    return (dispatch) =>{
+        axios.post(authUrl + "signup", credentials)
+            .then((response) =>{
+                let token = response.data.token;
+                localStorage.setItem("token", token);
+                let user = response.data.user;
+                let isValid = response.data.success
+                dispatch(authenticate(isValid, user));
             })
     }
 }
