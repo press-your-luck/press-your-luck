@@ -22,7 +22,7 @@ class TriviaContainer extends Component {
         this.props.useChoice();
         this.handleRoundChange();
       } else {
-        console.log("wrong answer!")
+        alert("wrong answer!");
         this.props.useChoice();
         this.handleRoundChange();
       }
