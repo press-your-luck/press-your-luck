@@ -50,7 +50,7 @@ authRoute.route("/signup")
                             res.status(201).send({
                                 user: user.withoutPwd(),
                                 success: true,
-                                token: jwt.sign(user.withoutPwd(), config.secret, { expiresIn: 30 * 60 })
+                                token: jwt.sign(user.withoutPwd(), config.secret, { expiresIn: 90 * 60 })
                             })
                         }
                     })
