@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import SignUpContainer from "../signin/SignUpContainer.js";
 
 class GameRoomComponent extends Component {
   render() {
@@ -8,6 +9,7 @@ class GameRoomComponent extends Component {
           <div className="row">
             <div className="col-md-6">
               <h1>Player One</h1>
+              <SignUpContainer />
               <h1>Player Two</h1>
               <h1>Player Three</h1>
             </div>
