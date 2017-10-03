@@ -4,33 +4,33 @@ import { connect } from "react-redux";
 import { signup } from "../../redux/actions/action"
 
 class SignUpContainer extends Component {
-  constructor(){
+  constructor() {
     super()
     this.state = {
       inputs: {
-            username: "",
-            password: "",
-            email: ""
-        }
+        username: "",
+        password: "",
+        email: ""
+      }
     }
-}
-  handleChange = (e) =>{
-      e.persist();
-      this.setState((prevState) =>{
-          return {
-              inputs: {
-                ...prevState.inputs,
-                [e.target.name] : e.target.value
-              }
-          }
-      })
   }
-  handleSubmit = (e) =>{
-      e.preventDefault();
-      this.props.signup(this.state.inputs);
-  }  
-  
-  
+  handleChange = (e) => {
+    e.persist();
+    this.setState((prevState) => {
+      return {
+        inputs: {
+          ...prevState.inputs,
+          [e.target.name]: e.target.value
+        }
+      }
+    })
+  }
+  handleSubmit = (e) => {
+    e.preventDefault();
+    this.props.signup(this.state.inputs);
+  }
+
+
   render() {
     return (
       <div>
@@ -40,7 +40,7 @@ class SignUpContainer extends Component {
   }
 }
 
-const mapStateToProps = function(state){
+const mapStateToProps = function (state) {
   return state
 }
 
