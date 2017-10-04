@@ -17,7 +17,9 @@ let defaultState = {
         spins: 0,
         choice: 1,        
         playerReady: false
-        }
+        },
+    currentGame: {},
+    availableGames: []
 
 }
 
@@ -50,7 +52,16 @@ export function mainReducer(state = defaultState, action) {
                     ...action.err
             }
         }
-        
+        case "CREATE_GAME":
+            return {
+                ...state,
+                currentGame: action.game.data
+            }
+        case "LOAD_AVAILABLE_GAMES":
+            return {
+                ...state,
+                availableGames: action.games
+            }
         default:
             return state
     }

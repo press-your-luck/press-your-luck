@@ -15,7 +15,7 @@ const gameRoute = express.Router();
 gameRoute.route("/initialize")
     .post((req, res) => {
         let gameReady = new gameModel(req.body);
-        gameReady.playerIDs = req.user._id;
+        // gameReady.playerIDs = req.user._id;
         gameReady.save((err, game) => {
             if (err) {
                 res.status(500).send(err)
@@ -24,6 +24,8 @@ gameRoute.route("/initialize")
             }
         })
     })
+
+gameRoute.route("/")    
 
 gameRoute.route("/join/:id")
     .put((req, res) => {
@@ -38,7 +40,9 @@ gameRoute.route("/join/:id")
         })
     })
 
-    gameRoute.route("/startTrivia");
+// gameRoute.route("/startTrivia")
+//     .get(`https://qriusity.com/v1/questions?page=${Math.floor(Math.random() * 17904)}&limit=1`)
+//         .then
 
 // const getAll = function () {
 //     axios.get(`https://qriusity.com/v1/questions?page=${Math.floor(Math.random() * 17904)}&limit=1`)

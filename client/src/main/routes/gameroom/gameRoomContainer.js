@@ -1,12 +1,21 @@
 import React, { Component } from 'react';
-import GameRoomComponent from "./gameRoomComponent"
+import GameRoomComponent from "./gameRoomComponent";
+import { connect } from "react-redux";
+import { initializeGame } from "../../redux/actions/action";
 
 class GameRoomContainer extends Component {
+  handleCreate = () => {
+    this.props.initializeGame()
+  }
   render() {
     return (
-        <GameRoomComponent />
+      <GameRoomComponent handleCreate={this.handleCreate} currentGame={this.props.currentGame}/>
     );
   }
 }
 
-export default GameRoomContainer;
+const mapStateToProps = (state) => {
+  return state
+}
+
+export default connect(mapStateToProps, { initializeGame })(GameRoomContainer);
