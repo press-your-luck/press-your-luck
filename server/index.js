@@ -6,6 +6,7 @@ const bodyParser = require("body-parser");
 const config = require("./config");
 const gameRoute = require("./routes/gamedata.js");
 const authRoute = require("./routes/auth.js");
+const playerRoute = require("./routes/player");
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -13,6 +14,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 
 app.use("/game", gameRoute);
 app.use("/auth", authRoute);
+app.use("/player", playerRoute)
 
 
 
