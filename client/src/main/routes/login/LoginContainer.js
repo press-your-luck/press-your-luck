@@ -34,8 +34,6 @@ class LoginContainer extends Component {
     
     render() {
         return (
-            this.props.isAuthenticated ?
-            <Redirect to="/gameroom" /> :
             <LoginComponent 
             handleSubmit={this.handleSubmit} 
             handleChange={this.handleChange} 

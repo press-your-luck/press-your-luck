@@ -37,7 +37,7 @@ export function mainReducer(state = defaultState, action) {
         case "AUTHENTICATE" : {
              return {
                 ...state,
-                isAuthenticate: action.isValid,
+                isAuthenticated: action.isValid,
                 user: action.user,
                 authError: { ...defaultState.authError}
              }
