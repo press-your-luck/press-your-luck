@@ -62,6 +62,11 @@ export function mainReducer(state = defaultState, action) {
                 ...state,
                 availableGames: action.games
             }
+        case "CHOOSE_GAME":
+            return {
+                ...state,
+                currentGame: action.game
+            }
         default:
             return state
     }

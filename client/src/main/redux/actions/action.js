@@ -74,6 +74,12 @@ export function loadAvailableGames(games) {
     }
 }
 
+export function chooseGame(game) {
+    return {
+        type: "CHOOSE_GAME",
+        game
+    }
+}
 
 export function loadQuestion() {
     return (dispatch) => {
@@ -129,7 +135,10 @@ export function getAvailableGames () {
     return (dispatch)=>{
         axios.get(gameUrl + `?gameAvailable=true`)
             .then((response)=>{
-                console.log(response)
+                dispatch(loadAvailableGames(response.data.games))
+            })
+            .catch((err)=>{
+                console.error(err)
             })
     }
 }
@@ -138,7 +147,10 @@ export function joinGame(gameId) {
     return (dispatch)=>[
         axios.put(gameUrl + "/join/" + gameId)
             .then((response)=>{
-                dispatch(addUser(response))
+                dispatch(chooseGame(response))
+            })
+            .catch((err)=>{
+                console.error(err)
             })
     ]
 }

@@ -25,7 +25,16 @@ gameRoute.route("/initialize")
         })
     })
 
-gameRoute.route("/")    
+gameRoute.route("/")
+    .get((req, res)=>{
+        gameModel.find(req.query, (err, games)=>{
+            if (err) {
+                res.status(500).send(err)
+            } else {
+                res.status(201).send({message: "SUCCESSFUL GET REQUEST", games})
+            }
+        })
+    })    
 
 gameRoute.route("/join/:id")
     .put((req, res) => {
