@@ -5,8 +5,7 @@ import { connect } from "react-redux";
 
 import { Redirect } from "react-router-dom";
 
-import { signup } from "../../redux/actions/action"
-import LoginContainer from "../login/LoginContainer"
+import { signup } from "../../redux/actions/action";
 
 
 class SignUpContainer extends Component {
