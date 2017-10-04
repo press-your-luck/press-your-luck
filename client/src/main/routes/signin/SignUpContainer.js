@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import SignUpComponent from "./SignUpComponent.js"
+import SignUpComponent from "./SignUpComponent.js";
+import LoginContainer from "../login/LoginContainer";
 import { connect } from "react-redux";
-import { signup } from "../../redux/actions/action"
+import { signup } from "../../redux/actions/action";
+import { Redirect } from "react-router-dom";
 
 class SignUpContainer extends Component {
   constructor() {
@@ -33,9 +35,15 @@ class SignUpContainer extends Component {
 
   render() {
     return (
-      <div>
-        <SignUpComponent handleSubmit={this.handleSubmit} handleChange={this.handleChange} {...this.state} />
-      </div>
+        this.props.isAuthenticated ?
+        <Redirect to="/gameroom" /> :
+        <div>
+        <SignUpComponent 
+          handleSubmit={this.handleSubmit} 
+          handleChange={this.handleChange} 
+          {...this.state} />
+          <LoginContainer />
+          </div>
     );
   }
 }
