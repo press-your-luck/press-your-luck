@@ -10,7 +10,7 @@ const authorize = expressJwt({ secret: config.secret })
 
 const gameRoute = express.Router();
 
-// gameRoute.use(authorize);
+gameRoute.use(authorize);
 
 gameRoute.route("/initialize")
     .post((req, res) => {
