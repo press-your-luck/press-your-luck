@@ -145,7 +145,7 @@ export function getAvailableGames () {
 
 export function joinGame(gameId) {
     return (dispatch)=>[
-        axios.put(gameUrl + "/join/" + gameId)
+        axios.put(gameUrl + "join/" + gameId, {})
             .then((response)=>{
                 dispatch(chooseGame(response))
             })
