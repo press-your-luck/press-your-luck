@@ -2,8 +2,12 @@ import React, { Component } from 'react';
 import SignUpComponent from "./SignUpComponent.js";
 import LoginContainer from "../login/LoginContainer";
 import { connect } from "react-redux";
-import { signup } from "../../redux/actions/action";
+
 import { Redirect } from "react-router-dom";
+
+import { signup } from "../../redux/actions/action"
+import LoginContainer from "../login/LoginContainer"
+
 
 class SignUpContainer extends Component {
   constructor() {
@@ -35,6 +39,7 @@ class SignUpContainer extends Component {
 
   render() {
     return (
+
         this.props.isAuthenticated ?
         <Redirect to="/gameroom" /> :
         <div>
@@ -44,6 +49,8 @@ class SignUpContainer extends Component {
           {...this.state} />
           <LoginContainer />
           </div>
+
+
     );
   }
 }
