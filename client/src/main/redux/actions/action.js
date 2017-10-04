@@ -10,6 +10,7 @@ axios.interceptors.request.use((config) => {
 
 const authUrl = "http://localhost:9000/auth/";
 const profileUrl = "http://localhost:9000/player/";
+const gameUrl = "http://localhost:9000/game/";
 
 export function verifyToken() {
     return (dispatch) => {
@@ -59,6 +60,21 @@ export function setQuestion(question) {
     }
 }
 
+export function createGame(game) {
+    return {
+        type: "CREATE_GAME",
+        game
+    }
+}
+
+export function loadAvailableGames(games) {
+    return {
+        type: "LOAD_AVAILABLE_GAMES",
+        games
+    }
+}
+
+
 export function loadQuestion() {
     return (dispatch) => {
         axios.get(`https://qriusity.com/v1/questions?page=${Math.floor(Math.random() * 17904)}&limit=1`)
@@ -95,6 +111,36 @@ export function login(credentials) {
                 dispatch(authenticate(isValid, user));
             })
     }
+}
+
+export function initializeGame() {
+    return (dispatch)=>{
+        axios.post(gameUrl + "initialize")
+            .then((response)=>{
+                dispatch(createGame(response))
+            })
+            .catch((err)=>{
+                console.error(err)
+            })
+    }
+}
+
+export function getAvailableGames () {
+    return (dispatch)=>{
+        axios.get(gameUrl + `?gameAvailable=true`)
+            .then((response)=>{
+                console.log(response)
+            })
+    }
+}
+
+export function joinGame(gameId) {
+    return (dispatch)=>[
+        axios.put(gameUrl + "/join/" + gameId)
+            .then((response)=>{
+                dispatch(addUser(response))
+            })
+    ]
 }
 
 

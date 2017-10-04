@@ -3,6 +3,7 @@ import SignUpContainer from "../signin/SignUpContainer.js";
 
 class GameRoomComponent extends Component {
   render() {
+    console.log(this.props.currentGame.message)
     return (
       <div className="row">
         <div className="col-mid-12">
@@ -14,7 +15,8 @@ class GameRoomComponent extends Component {
               <h1>Player Three</h1>
             </div>
             <div className="col-md-6">
-              <button>Create Game</button>
+              <button onClick={this.props.handleCreate}>Create Game</button>
+              <p>{this.props.currentGame.message}</p>
               <button>Join Game</button>
             </div>
           </div>

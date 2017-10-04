@@ -29,7 +29,12 @@ const gameSchema = new Schema({
     playerIDs: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: "user"
-    }]
+    }],
+    gameAvailable: {
+        type: Boolean,
+        default: true,
+        required: true
+    }
 })
 
 module.exports = mongoose.model("game", gameSchema);
