@@ -126,6 +126,7 @@ export function login(credentials) {
     }
 }
 
+//passed and called in GameRoomContainer
 export function initializeGame() {
     return (dispatch)=>{
         axios.post(gameUrl + "initialize")
@@ -138,6 +139,7 @@ export function initializeGame() {
     }
 }
 
+//passed and called in GameRoomContainer in componentdidmount + handleCreate
 export function getAvailableGames () {
     return (dispatch)=>{
         axios.get(gameUrl + `?gameAvailable=true`)
