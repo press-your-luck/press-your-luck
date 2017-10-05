@@ -1,11 +1,46 @@
 /* feel free to change this, nothing permanent */
 
+body{
+ background-color: green;
+}
+
+.sign-up-header{
+  color: lightyellow;
+  font-size: 8vh;
+  font-family: 'Codystar', cursive;
+
+}
+.peter-tomarken{
+  height: 50vh;
+  width: 50vh;
+}
+
+
 .joinButton {
   background-color: green;
-  width: 100px;
+  width: 10vh;
   text-align: center;
 }
 
 .joinButton:hover {
   cursor: pointer;
+}
+
+.sign-in{
+  display: block;
+  margin: 2vh;
+}
+
+.host{
+  position: absolute;
+  right: 5%;
+  bottom: 8%;
+  }
+
+.player-console{
+  height: 11vh;
+  background-color: black;
+  position: absolute;
+  bottom: 0;
+  left: 0;
 }

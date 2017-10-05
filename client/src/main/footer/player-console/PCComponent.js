@@ -3,8 +3,8 @@ import React, { Component } from 'react';
 class PCComponent extends Component {
   render() {
     return (
-      <div>
-        Hi, I'm the Player Console!  There shouldn't be anyone here but me!
+      <div className="player-console col-xs-12">
+        
       </div>
     );
   }
