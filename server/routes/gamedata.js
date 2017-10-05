@@ -53,7 +53,7 @@ gameRoute.route("/startTrivia/:id")
     .put((req, res)=>{
         axios.get(`https://qriusity.com/v1/questions?page=${Math.floor(Math.random() * 17904)}&limit=1`)
         .then((response) => {
-            gameModel.findByIdAndUpdate(req.params.id, { currentQuestion: response.data }, { new: true}, (err, game)=>{
+            gameModel.findByIdAndUpdate(req.params.id, { currentQuestion: response.data[0] }, { new: true}, (err, game)=>{
                 if (err) {
                     res.status(500).send(err)
                 } else if (game === null) {

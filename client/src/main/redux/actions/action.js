@@ -60,9 +60,9 @@ export function setQuestion(question) {
     }
 }
 
-export function createGame(game) {
+export function setGame(game) {
     return {
-        type: "CREATE_GAME",
+        type: "SET_GAME",
         game
     }
 }
@@ -82,9 +82,9 @@ export function chooseGame(game) {
 }
 
 //this initiates the switch from the gameroom to the trivia, might need a less confusing name.
-export function joinedGame() {
+export function joinedGameBoolean() {
     return {
-        type: "JOINED_GAME",
+        type: "JOINED_GAME_BOOLEAN",
     }
 }
 
@@ -92,10 +92,10 @@ export function loadQuestion(gameID) {
     return (dispatch) => {
         axios.put(gameUrl + "startTrivia/" + gameID)
             .then((response) => {
-                dispatch(setQuestion(response.data[0]))
+                dispatch(authenticate(setGame(response.data.game)));
             })
             .catch((err) => {
-                console.log(err);
+                console.error(err);
             })
     }
 }
@@ -130,7 +130,7 @@ export function initializeGame() {
     return (dispatch)=>{
         axios.post(gameUrl + "initialize")
             .then((response)=>{
-                dispatch(createGame(response.data.game))
+                dispatch(setGame(response.data.game))
             })
             .catch((err)=>{
                 console.error(err)

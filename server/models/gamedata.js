@@ -15,10 +15,6 @@ const gameSchema = new Schema({
         type: Number,
         default: 0
     }],
-    choice : [{
-        type: Number,
-        default: 1
-    }],
     money: [{
         type: Number,
         default: 0
