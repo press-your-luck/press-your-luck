@@ -4,9 +4,9 @@ import { loadQuestion, addSpin, useChoice } from "../../redux/actions/action.js"
 import { connect } from "react-redux";
 
 class TriviaContainer extends Component {
-  // componentWillMount() {
-  //   this.props.loadQuestion(this.props.currentGame._id);
-  // }
+  componentWillMount() {
+    this.props.loadQuestion(this.props.currentGame._id);
+  }
   
   // handleRoundChange(){
   //     this.props.loadQuestion();

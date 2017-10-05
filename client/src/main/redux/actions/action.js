@@ -88,17 +88,17 @@ export function joinedGameBoolean() {
     }
 }
 
-// export function loadGame(gameId){
-//     return (dispatch) => {
-//         axios.get(gameUrl + gameId)
-//             .then((response) => {
-//                 dispatch(authenticate(setGame(response.data.game)))
-//             })
-//             .catch((err) =>{
-//                 console.error(err);
-//             })
-//     }
-// }
+export function loadGame(gameId){
+    return (dispatch) => {
+        axios.get(gameUrl + gameId)
+            .then((response) => {
+                dispatch(authenticate(setGame(response.data.game)))
+            })
+            .catch((err) =>{
+                console.error(err);
+            })
+    }
+}
 
 export function loadQuestion(gameID) {
     return (dispatch) => {
