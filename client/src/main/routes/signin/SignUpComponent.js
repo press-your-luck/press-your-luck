@@ -4,19 +4,19 @@ class SignUpComponent extends Component {
   render() {
     return (
        <div>
-            <span>Sign Up!</span>
+            <span className="sign-up-header">Sign Up!</span>
                 <form onSubmit={this.props.handleSubmit}>
-                    <input onChange={this.props.handleChange}
+                    <input className="sign-in" onChange={this.props.handleChange}
                         value={this.props.inputs.username}
                         name="username"
                         type="text"
                         placeholder="username" />
-                    <input onChange={this.props.handleChange}
+                    <input className="sign-in"  onChange={this.props.handleChange}
                         value={this.props.inputs.password}
                         name="password"
                         type="password"
                         placeholder="password" />
-                    <input onChange={this.props.handleChange}
+                    <input className="sign-in"  onChange={this.props.handleChange}
                         value={this.props.inputs.email}
                         name="email"
                         type="text"

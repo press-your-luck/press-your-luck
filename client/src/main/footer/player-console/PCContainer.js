@@ -4,10 +4,8 @@ import PCComponent from "./PCComponent";
 class PCContainer extends Component {
   render() {
     return (
-      <div>
-       <PCComponent />
-      </div>
-    );
+      <PCComponent />
+      );
   }
 }
 
