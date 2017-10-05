@@ -28,7 +28,8 @@ const gameSchema = new Schema({
     },
     playerIDs: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: "user"
+        ref: "user",
+        unique: true
     }],
     gameAvailable: {
         type: Boolean,

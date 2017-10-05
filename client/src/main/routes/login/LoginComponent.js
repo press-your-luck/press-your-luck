@@ -16,7 +16,7 @@ class LoginComponent extends Component {
                         name="password"
                         type="password"
                         placeholder="password" />
-                    <button type="submit">CREATE ACCOUNT</button>
+                    <button type="submit">Sign In</button>
                 </form>
             </div>
         );

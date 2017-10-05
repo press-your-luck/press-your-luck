@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import GameItemComponent from "./GameItemComponent";
 import { connect } from "react-redux";
-import { joinGame } from "../../../redux/actions/action";
+import { joinGame, joinedGame } from "../../../redux/actions/action";
 
 class GameItemContainer extends Component {
   handleGameChoice = (id) => {
-    this.props.joinGame(id)
+    this.props.joinGame(id);
+    this.props.joinedGame();
   }
   render() {
     return (
@@ -14,4 +15,5 @@ class GameItemContainer extends Component {
   }
 }
 
-export default connect(null, { joinGame })(GameItemContainer);
+
+export default connect(null, { joinGame, joinedGame })(GameItemContainer);

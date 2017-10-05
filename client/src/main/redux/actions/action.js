@@ -81,9 +81,16 @@ export function chooseGame(game) {
     }
 }
 
-export function loadQuestion() {
+//this initiates the switch from the gameroom to the trivia, might need a less confusing name.
+export function joinedGame() {
+    return {
+        type: "JOINED_GAME",
+    }
+}
+
+export function loadQuestion(gameID) {
     return (dispatch) => {
-        axios.get(`https://qriusity.com/v1/questions?page=${Math.floor(Math.random() * 17904)}&limit=1`)
+        axios.put(gameUrl + "startTrivia/" + gameID)
             .then((response) => {
                 dispatch(setQuestion(response.data[0]))
             })
@@ -123,7 +130,7 @@ export function initializeGame() {
     return (dispatch)=>{
         axios.post(gameUrl + "initialize")
             .then((response)=>{
-                dispatch(createGame(response))
+                dispatch(createGame(response.data.game))
             })
             .catch((err)=>{
                 console.error(err)
@@ -147,7 +154,7 @@ export function joinGame(gameId) {
     return (dispatch)=>[
         axios.put(gameUrl + "join/" + gameId, {})
             .then((response)=>{
-                dispatch(chooseGame(response))
+                dispatch(chooseGame(response.data.game))
             })
             .catch((err)=>{
                 console.error(err)

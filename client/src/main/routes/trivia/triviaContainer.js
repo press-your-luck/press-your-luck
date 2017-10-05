@@ -5,14 +5,12 @@ import { connect } from "react-redux";
 
 class TriviaContainer extends Component {
   componentWillMount() {
-    this.props.loadQuestion();
+    this.props.loadQuestion(this.props.currentGame._id);
   }
   
-  handleRoundChange(){
-    if (this.props.player1.playerReady){
-      this.props.loadQuestion();
-    }
-  }
+  // handleRoundChange(){
+  //     this.props.loadQuestion();
+  // }
   
   handleAnswer = (e) => {
     if (this.props.player1.choice == 1) {
@@ -33,6 +31,7 @@ class TriviaContainer extends Component {
   }
 
   render() {
+    console.log(this.props.currentGame)
     return (
       <TriviaComponent handleAnswer={this.handleAnswer} question={this.props.currentQuestion} />
     );

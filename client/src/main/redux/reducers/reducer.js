@@ -19,7 +19,8 @@ let defaultState = {
         playerReady: false
         },
     currentGame: {},
-    availableGames: []
+    availableGames: [],
+    joinedGame: false
 
 }
 
@@ -66,6 +67,11 @@ export function mainReducer(state = defaultState, action) {
             return {
                 ...state,
                 currentGame: action.game
+            }
+        case "JOINED_GAME":
+            return {
+                ...state,
+                joinedGame: !defaultState.joinedGame
             }
         default:
             return state
