@@ -36,7 +36,7 @@ class LoginContainer extends Component {
             <LoginComponent 
             handleSubmit={this.handleSubmit} 
             handleChange={this.handleChange} 
-            authMsg={this.props.authError.login} 
+            authMsg={this.props.authError.login}
             {...this.state} />
         );
     }

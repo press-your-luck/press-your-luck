@@ -4,17 +4,17 @@ import { loadQuestion, addSpin, useChoice } from "../../redux/actions/action.js"
 import { connect } from "react-redux";
 
 class TriviaContainer extends Component {
-  componentWillMount() {
-    this.props.loadQuestion(this.props.currentGame._id);
-  }
+  // componentWillMount() {
+  //   this.props.loadQuestion(this.props.currentGame._id);
+  // }
   
   // handleRoundChange(){
   //     this.props.loadQuestion();
   // }
   
   handleAnswer = (e) => {
-    if (this.props.player1.choice == 1) {
-      if (e.target.name == this.props.currentQuestion.answers) {
+    if (this.props.choice == 1) {
+      if (e.target.name == this.props.currentGame.currentQuestion.answers) {
         alert("correct answer! 1 spin awarded!")
         this.props.addSpin();
         this.props.useChoice();
@@ -33,7 +33,7 @@ class TriviaContainer extends Component {
   render() {
     console.log(this.props.currentGame)
     return (
-      <TriviaComponent handleAnswer={this.handleAnswer} question={this.props.currentQuestion} />
+      <TriviaComponent handleAnswer={this.handleAnswer} currentQuestion={this.props.currentGame.currentQuestion} />
     );
   }
 }

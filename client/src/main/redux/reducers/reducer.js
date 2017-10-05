@@ -12,13 +12,22 @@ let defaultState = {
         verify: ""
     },
     users: [],
-    currentQuestion: {},
-    player1 : {
-        spins: 0,
-        choice: 1,        
+    player : {
+        spins: 0,        
         playerReady: false
         },
-    currentGame: {},
+    choice: 1,
+    currentGame: {
+        currentQuestion: {
+            question: "",
+            option1: "",
+            option2: "",
+            option3: "",
+            option4: "",
+            answers: 0
+        },
+
+    },
     availableGames: [],
     joinedGame: false
 
@@ -53,7 +62,7 @@ export function mainReducer(state = defaultState, action) {
                     ...action.err
             }
         }
-        case "CREATE_GAME":
+        case "SET_GAME":
             return {
                 ...state,
                 currentGame: action.game.data
@@ -68,7 +77,7 @@ export function mainReducer(state = defaultState, action) {
                 ...state,
                 currentGame: action.game
             }
-        case "JOINED_GAME":
+        case "JOINED_GAME_BOOLEAN":
             return {
                 ...state,
                 joinedGame: !defaultState.joinedGame
