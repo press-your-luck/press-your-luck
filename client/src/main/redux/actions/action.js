@@ -14,7 +14,7 @@ const gameUrl = "http://localhost:9000/game/";
 
 export function verifyToken() {
     return (dispatch) => {
-        axios.get(profileUrl, + "verify")
+        axios.get(profileUrl + "verify")
             .then((response) => {
                 let user = response.data.user;
                 let isValid = response.data.success;
@@ -88,6 +88,18 @@ export function joinedGameBoolean() {
     }
 }
 
+// export function loadGame(gameId){
+//     return (dispatch) => {
+//         axios.get(gameUrl + gameId)
+//             .then((response) => {
+//                 dispatch(authenticate(setGame(response.data.game)))
+//             })
+//             .catch((err) =>{
+//                 console.error(err);
+//             })
+//     }
+// }
+
 export function loadQuestion(gameID) {
     return (dispatch) => {
         axios.put(gameUrl + "startTrivia/" + gameID)
@@ -131,7 +143,7 @@ export function initializeGame() {
     return (dispatch)=>{
         axios.post(gameUrl + "initialize")
             .then((response)=>{
-                dispatch(setGame(response.data.game))
+                dispatch(getAvailableGames())
             })
             .catch((err)=>{
                 console.error(err)

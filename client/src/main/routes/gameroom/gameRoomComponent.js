@@ -21,7 +21,6 @@ class GameRoomComponent extends Component {
             </div>
             <div className="col-md-6">
               <button onClick={this.props.handleCreate}>Create Game</button>
-              <p>{this.props.currentGame.message}</p>
               <h1>Available Games:</h1>
               <div>
                 {this.genGames()}

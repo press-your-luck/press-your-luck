@@ -20,12 +20,20 @@ const gameSchema = new Schema({
         default: 0
     }],
     currentQuestion: {
-        type: Object
+        type: Object,
+        default: {
+                question: "",
+                option1: "",
+                option2: "",
+                option3: "",
+                option4: "",
+                answers: 0
+            }
+        
     },
     playerIDs: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: "user",
-        unique: true
     }],
     gameAvailable: {
         type: Boolean,

@@ -26,7 +26,7 @@ let defaultState = {
             option4: "",
             answers: 0
         },
-
+        playerIDs: []
     },
     availableGames: [],
     joinedGame: false
@@ -51,7 +51,7 @@ export function mainReducer(state = defaultState, action) {
                 ...state,
                 isAuthenticated: action.isValid,
                 user: action.user,
-                authError: { ...defaultState.authError}
+                authError: { ...state.authError}
              }
         }
         case "AUTH_ERROR":
