@@ -14,10 +14,10 @@ gameRoute.use(authorize);
 
 gameRoute.route("/initialize")
     .post((req, res) => {
-        let gameReady = new gameModel(req.body);
-        // gameReady.playerIDs = req.user._id;
+        let gameReady = new gameModel();
         gameReady.save((err, game) => {
             if (err) {
+                console.log(err)
                 res.status(500).send(err)
             } else {
                 res.status(201).send({ message: "SUCCESSFUL GAME CREATION", game })

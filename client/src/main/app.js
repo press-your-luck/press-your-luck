@@ -5,7 +5,7 @@ import GameRoomContainer from "./routes/gameroom/gameRoomContainer";
 import SignUpContainer from "./routes/signin/SignUpContainer";
 import ProtectedRoute from "./routes/ProtectedRoute.js";
 
-import { Route, withRouter, Switch } from "react-router-dom";
+import { Route, withRouter, Switch, Redirect } from "react-router-dom";
 import { verifyToken } from "./redux/actions/action";
 import { connect } from "react-redux";
 
@@ -15,10 +15,15 @@ class App extends Component {
     this.props.verifyToken();
   }
   render() {
+    const isAuthenticated = this.props.isAuthenticated
     return (
       <div className="container-fluid">
         <Switch>
-          <Route exact path="/" component={SignUpContainer} />
+          <Route exact path="/" render={(props)=>{
+                       return  isAuthenticated ?
+                        <Redirect to= "/gameroom"/> :
+                        <SignUpContainer {...props}/> 
+          }} />
           <ProtectedRoute path="/gameroom" component={GameRoomContainer} />
           <ProtectedRoute path="/trivia" component={TriviaContainer} />
         </Switch>
@@ -28,4 +33,8 @@ class App extends Component {
   }
 }
 
-export default withRouter(connect(null, { verifyToken })(App));
+const mapStateToProps = function(state){
+  return state
+}
+
+export default withRouter(connect(mapStateToProps, { verifyToken })(App));

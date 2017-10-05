@@ -18,11 +18,11 @@ class TriviaContainer extends Component {
         alert("correct answer! 1 spin awarded!")
         this.props.addSpin();
         this.props.useChoice();
-        this.handleRoundChange();
+        // this.handleRoundChange();
       } else {
         alert("wrong answer!");
         this.props.useChoice();
-        this.handleRoundChange();
+        // this.handleRoundChange();
       }
     }
     else {
@@ -31,7 +31,6 @@ class TriviaContainer extends Component {
   }
 
   render() {
-    console.log(this.props.currentGame)
     return (
       <TriviaComponent handleAnswer={this.handleAnswer} currentQuestion={this.props.currentGame.currentQuestion} />
     );

@@ -5,7 +5,7 @@ import { initializeGame, getAvailableGames } from "../../redux/actions/action";
 import { Redirect } from "react-router-dom";
 
 class GameRoomContainer extends Component {
-  componentDidMount() {
+  componentWillMount() {
     this.props.getAvailableGames();
   }
   handleCreate = () => {
