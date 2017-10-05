@@ -5,14 +5,10 @@ import { joinGame, joinedGameBoolean, loadQuestion } from "../../../redux/action
 
 class GameItemContainer extends Component {
   handleGameChoice = (id) => {
-      // this.props.loadGame(id);
-      
       this.props.joinGame(id);
-     
       this.props.loadQuestion(id)
       this.props.joinedGameBoolean();
-      
-     }
+  }
   render() {
     return (
         <GameItemComponent game={this.props.game} handleGameChoice={this.handleGameChoice}/>
@@ -20,5 +16,9 @@ class GameItemContainer extends Component {
   }
 }
 
+const mapStateToProps = function(state){
+  return state
+}
 
-export default connect(null, { joinGame, joinedGameBoolean, loadQuestion })(GameItemContainer);
+
+export default connect(mapStateToProps, { joinGame, joinedGameBoolean, loadQuestion})(GameItemContainer);
