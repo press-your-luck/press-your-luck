@@ -26,32 +26,70 @@ gameRoute.route("/initialize")
     })
 
 gameRoute.route("/")
-    .get((req, res)=>{
-        gameModel.find(req.query, (err, games)=>{
+    .get((req, res) => {
+        gameModel.find(req.query, (err, games) => {
             if (err) {
                 res.status(500).send(err)
             } else {
-                res.status(201).send({message: "SUCCESSFUL GET REQUEST", games})
-            }
-        })
-    })    
-
-gameRoute.route("/join/:id")
-    .put((req, res) => {
-        gameModel.findByIdAndUpdate(req.params.id, {$push: {playerIDs: req.user._id}}, { new: true }, (err, game) => {
-            if (err) {
-                res.status(500).send(err)
-            } else if (game === null) {
-                res.status(404).send({message: "GAME NOT FOUND"})
-            } else {
-                res.status(200).send({message: "JOINED GAME", game})
+                res.status(201).send({ message: "SUCCESSFUL GET REQUEST", games })
             }
         })
     })
 
-// gameRoute.route("/startTrivia")
-//     .get(`https://qriusity.com/v1/questions?page=${Math.floor(Math.random() * 17904)}&limit=1`)
-//         .then
+gameRoute.route("/join/:id")
+    .put((req, res) => {
+        gameModel.findByIdAndUpdate(req.params.id, { $push: { playerIDs: req.user._id } }, { new: true }, (err, game) => {
+            if (err) {
+                res.status(500).send(err)
+            } else if (game === null) {
+                res.status(404).send({ message: "GAME NOT FOUND" })
+            } else {
+                res.status(200).send({ message: "JOINED GAME", game })
+            }
+        })
+    })
+
+gameRoute.route("/startTrivia/:id")
+    .put((req, res)=>{
+        axios.get(`https://qriusity.com/v1/questions?page=${Math.floor(Math.random() * 17904)}&limit=1`)
+        .then((response) => {
+            gameModel.findByIdAndUpdate(req.params.id, { currentQuestion: response.data }, { new: true}, (err, game)=>{
+                if (err) {
+                    res.status(500).send(err)
+                } else if (game === null) {
+                    res.status(404).send({message: "GAME NOT FOUND"})
+                } else {
+                    res.status(200).send({message: "FOUND QUESTION", game})
+                }
+            })
+
+        .catch((err) => {
+            console.error(err)
+        })
+    })
+})
+    
+    
+
+// .put((req, res)=>{
+//     gameModel.findByIdAndUpdate(req.params.id, {$push: {currentQuestion: retrieveQuestion()}}, { new: true }, (err, game)=>{
+//         if (err) {
+//             res.status(500).send(err, {message: "TRIVIA NOT WORKING"})
+//         } else if (game === null) {
+//             res.status(400).send({message: "THIS IS NOT WORKING"})
+//         } else {
+//             res.status(200).send({message: "QUESTION UPDATED", game})
+//         }
+//     })
+// })
+
+
+
+
+
+
+
+
 
 // const getAll = function () {
 //     axios.get(`https://qriusity.com/v1/questions?page=${Math.floor(Math.random() * 17904)}&limit=1`)
@@ -64,8 +102,3 @@ gameRoute.route("/join/:id")
 // }
 
 module.exports = gameRoute;
-
-
-
-
-

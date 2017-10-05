@@ -1,19 +1,21 @@
 import React, { Component } from 'react';
 import GameRoomComponent from "./gameRoomComponent";
-import GameItemContainer from "./Game/GameItemContainer";
 import { connect } from "react-redux";
 import { initializeGame, getAvailableGames } from "../../redux/actions/action";
+import { Redirect } from "react-router-dom";
 
 class GameRoomContainer extends Component {
   componentDidMount() {
     this.props.getAvailableGames();
   }
   handleCreate = () => {
-    this.props.initializeGame()
+    this.props.initializeGame();
+    this.props.getAvailableGames();
   }
   render() {
-    console.log(this.props.availableGames);
     return (
+      this.props.joinedGame ?
+      <Redirect to="/trivia" /> :
       <GameRoomComponent handleCreate={this.handleCreate} games={this.props.availableGames} currentGame={this.props.currentGame}/>
     );
   }

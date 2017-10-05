@@ -5,7 +5,7 @@ class GameItemComponent extends Component {
     return (
       <div>
         <p>{this.props.game._id}</p>
-        <div onClick={()=>{this.props.handleGameChoice(this.props.game._id)}}>Join Game</div>
+        <div className="joinButton" onClick={()=>{this.props.handleGameChoice(this.props.game._id)}}>Join Game</div>
       </div>
     );
   }
