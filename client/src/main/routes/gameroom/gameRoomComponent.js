@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import SignUpContainer from "../signin/SignUpContainer.js";
 import GameItemContainer from "./Game/GameItemContainer";
 
 class GameRoomComponent extends Component {

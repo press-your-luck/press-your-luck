@@ -22,7 +22,7 @@ class TriviaContainer extends Component {
         // this.handleRoundChange();
       } else {
         let answerArray = [this.props.currentGame.currentQuestion.option1, this.props.currentGame.currentQuestion.option2, this.props.currentGame.currentQuestion.option3, this.props.currentGame.currentQuestion.option4];
-        alert(`WRONG! SAD! The Correct Answer Is: ${answerArray[this.props.currentGame.currentQuestion.answers]}`);
+        alert(`WRONG! SAD! The Correct Answer Is: ${answerArray[this.props.currentGame.currentQuestion.answers - 1]}`);
         this.props.useChoice();
         this.props.nextQuestion(this.props.currentGame._id);
       }
