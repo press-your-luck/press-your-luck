@@ -21,7 +21,7 @@ class SignUpComponent extends Component {
                         name="email"
                         type="text"
                         placeholder="email" />
-                    <button type="submit">CREATE ACCOUNT</button>
+                    <button  className="create-account" type="submit">CREATE ACCOUNT</button>
                 </form>
             </div>
     );
