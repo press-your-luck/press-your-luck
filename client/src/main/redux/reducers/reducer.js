@@ -76,10 +76,15 @@ export function mainReducer(state = defaultState, action) {
                 ...state,
                 availableGames: action.games
             }
-      case "JOINED_GAME_BOOLEAN":
+        case "JOINED_GAME_BOOLEAN":
             return {
                 ...state,
                 joinedGame: !defaultState.joinedGame
+            }
+        case "RESET_CHOICE":
+            return {
+                ...state,
+                choice: defaultState.choice
             }
         default:
             return state
