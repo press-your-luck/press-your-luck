@@ -4,7 +4,6 @@ class LoginComponent extends Component {
     render() {
         return (
         <div>
-            <span>Login</span>
                 <form onSubmit={this.props.handleSubmit}>
                     <input className="sign-in"  onChange={this.props.handleChange}
                         value={this.props.inputs.username}
@@ -16,7 +15,7 @@ class LoginComponent extends Component {
                         name="password"
                         type="password"
                         placeholder="password" />
-                    <button type="submit">Sign In</button>
+                    <button className="login" type="submit">Log In</button>
                     <div className="host">
                     <img className="peter-tomarken" src={require("../../../images/peter-tomarken.png")} alt="peter tomarken"/>
                     </div>

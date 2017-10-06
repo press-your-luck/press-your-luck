@@ -1,34 +1,63 @@
 /* feel free to change this, nothing permanent */
 
 body{
- background-color: black
+ background-color: black;
+ background-image: url("https://i.ytimg.com/vi/xf7pNSLFJOI/maxresdefault.jpg");
+ background-size: cover;
 }
 
 .question{
   color: ghostwhite;
   font-family: 'Codystar', cursive;
-  font-size: 6vh;
+  font-size: 3vh;
   text-align: center;
 }
 
-.options{
+.answer{
+  padding: 2vh;
+}
+
+.trivia-wrapper{
   display: flex;
   flex-direction: row;
   justify-content: center;
 }
 
-button{
+.trivia-box{
+  margin-top: 4vh;
+  background-color: black;
+  padding: 2vh;
+}
+
+.options{
+  margin-top: 4vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.login{
+  color: #c9db84;
+  font-size: 6vh;
   font-family: 'Codystar', cursive;
-  background: none;
-  border: none;
-  color: ghostwhite;
-  font-size: 3.5vh;
+  background: black;
+  border: 2px dotted #c9db84;
+}
+
+.create-account{
+  color: #c9db84;
+  font-size: 5vh;
+  font-family: 'Codystar', cursive;
+  background: black;
+  border: 2px dotted #c9db84;
 }
 
 .sign-up-header{
-  color: lightyellow;
-  font-size: 8vh;
+  color: #c9db84;
+  font-size: 6vh;
   font-family: 'Codystar', cursive;
+  background: black;
+  border: 2px dotted #c9db84;
 
 }
 .peter-tomarken{
@@ -50,11 +79,13 @@ button{
 .sign-in{
   display: block;
   margin: 2vh;
+  border: none;
+  background: black;
 }
 
 .host{
   position: absolute;
-  right: 5%;
+  right: 0;
   bottom: 8%;
   }
 
