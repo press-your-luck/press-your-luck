@@ -92,7 +92,7 @@ export function loadGame(gameId){
     return (dispatch) => {
         axios.get(gameUrl + gameId)
             .then((response) => {
-                dispatch(authenticate(setGame(response.data.game)))
+                dispatch(setGame(response.data.game))
             })
             .catch((err) =>{
                 console.error(err);
@@ -101,15 +101,15 @@ export function loadGame(gameId){
 }
 
 export function loadQuestion(gameID) {
-    return (dispatch) => {
-        axios.put(gameUrl + "startTrivia/" + gameID)
+    // return (dispatch) => {
+        return axios.put(gameUrl + "startTrivia/" + gameID)
             .then((response) => {
-                dispatch(authenticate(setGame(response.data.game)));
+                return response.data.game
             })
             .catch((err) => {
                 console.error(err);
             })
-    }
+    // }
 }
 
 export function signup(credentials) {
@@ -166,9 +166,13 @@ export function getAvailableGames () {
 
 export function joinGame(gameId) {
     return (dispatch)=>[
-        axios.put(gameUrl + "join/" + gameId, {})
+        axios.put(gameUrl + "join/" + gameId)
             .then((response)=>{
-                dispatch(chooseGame(response.data.game))
+                loadQuestion(gameId).then((game)=>{
+                    
+                    dispatch(setGame(game));
+                    dispatch(joinedGameBoolean());
+                })
             })
             .catch((err)=>{
                 console.error(err)

@@ -37,7 +37,7 @@ let defaultState = {
 export function mainReducer(state = defaultState, action) {
     switch (action.type) {
         case "SET_QUESTION": {
-            return { player1:{ ...state.player1, playerReady: false, choice: 1 }, currentQuestion: action.question,  }
+            return { ...state, player:{ ...state.player1, playerReady: false, choice: 1 }, currentQuestion: action.question,  }
         }
         case "ADD_SPIN": {
             return {...state, player1: { ...state.player1, spins: state.player1.spins + 1}}
@@ -65,7 +65,7 @@ export function mainReducer(state = defaultState, action) {
         case "SET_GAME":
             return {
                 ...state,
-                currentGame: action.game.data
+                currentGame: action.game
             }
         case "LOAD_AVAILABLE_GAMES":
             return {

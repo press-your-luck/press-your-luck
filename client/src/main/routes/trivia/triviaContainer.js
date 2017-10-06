@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 
 class TriviaContainer extends Component {
   componentWillMount() {
-    this.props.loadQuestion(this.props.currentGame._id);
+    // this.props.loadQuestion(this.props.currentGame._id);
   }
   
   // handleRoundChange(){
