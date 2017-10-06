@@ -103,6 +103,7 @@ export function loadQuestion(gameID) {
         })
 }
 
+//
 export function nextQuestion(gameID) {
     return (dispatch) => {
         axios.put(gameUrl + "startTrivia/" + gameID)
