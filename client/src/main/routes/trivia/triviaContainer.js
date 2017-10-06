@@ -11,7 +11,7 @@ class TriviaContainer extends Component {
   // handleRoundChange(){
   //     this.props.loadQuestion();
   // }
-  
+
   handleAnswer = (e) => {
     if (this.props.choice === 1) {
       if (e.target.name == this.props.currentGame.currentQuestion.answers) {
@@ -21,10 +21,10 @@ class TriviaContainer extends Component {
         this.props.nextQuestion(this.props.currentGame._id)
         // this.handleRoundChange();
       } else {
-        alert("wrong answer!");
+        let answerArray = [this.props.currentGame.currentQuestion.option1, this.props.currentGame.currentQuestion.option2, this.props.currentGame.currentQuestion.option3, this.props.currentGame.currentQuestion.option4];
+        alert(`WRONG! SAD! The Correct Answer Is: ${answerArray[this.props.currentGame.currentQuestion.answers]}`);
         this.props.useChoice();
         this.props.nextQuestion(this.props.currentGame._id);
-        // this.handleRoundChange();
       }
     }
     else {
@@ -36,17 +36,20 @@ class TriviaContainer extends Component {
   }
 
   render() {
+    const answerArray = [this.props.currentGame.currentQuestion.option1, this.props.currentGame.currentQuestion.option2, this.props.currentGame.currentQuestion.option3, this.props.currentGame.currentQuestion.option4];
     return (
-      this.props.choice === 0 ? 
-      <div>
-        <h3 onClick={this.handleNextQuestion}>Ready For Next Question?</h3>
-      </div> :
-      <TriviaComponent 
-        handleAnswer={this.handleAnswer} 
-        currentQuestion={this.props.currentGame.currentQuestion} />
+      this.props.choice === 0 ?
+        <div>
+          <h3 onClick={this.handleNextQuestion}>Ready For Next Question?</h3>
+        </div> :
+        <TriviaComponent
+          handleAnswer={this.handleAnswer}
+          currentQuestion={this.props.currentGame.currentQuestion} />
     );
   }
 }
+
+
 
 const mapStateToProps = function (state) {
   return state
