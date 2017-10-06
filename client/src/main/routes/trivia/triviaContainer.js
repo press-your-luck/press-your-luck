@@ -19,10 +19,9 @@ class TriviaContainer extends Component {
         this.props.addSpin();
         this.props.useChoice();
         this.props.nextQuestion(this.props.currentGame._id)
-        // this.handleRoundChange();
-      } else {
+        } else {
         let answerArray = [this.props.currentGame.currentQuestion.option1, this.props.currentGame.currentQuestion.option2, this.props.currentGame.currentQuestion.option3, this.props.currentGame.currentQuestion.option4];
-        alert(`WRONG! SAD! The Correct Answer Is: ${answerArray[this.props.currentGame.currentQuestion.answers - 1]}`);
+        alert(`WRONG! SAD! The Correct Answer Is: ${answerArray[this.props.currentGame.currentQuestion.answers -1]}`);
         this.props.useChoice();
         this.props.nextQuestion(this.props.currentGame._id);
       }
@@ -36,7 +35,8 @@ class TriviaContainer extends Component {
   }
 
   render() {
-    const answerArray = [this.props.currentGame.currentQuestion.option1, this.props.currentGame.currentQuestion.option2, this.props.currentGame.currentQuestion.option3, this.props.currentGame.currentQuestion.option4];
+    console.log(this.props.currentQuestion)
+    console.log(this.props.player.spins)
     return (
       this.props.choice === 0 ?
         <div>

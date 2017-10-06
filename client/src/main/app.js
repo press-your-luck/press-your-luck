@@ -17,7 +17,10 @@ class App extends Component {
   render() {
     const isAuthenticated = this.props.isAuthenticated
     return (
-      <div className="container-fluid">
+      <div>
+      <div className="site-wrapper container">
+        
+        <div className="row">
         <Switch>
           <Route exact path="/" render={(props)=>{
                        return  isAuthenticated ?
@@ -27,9 +30,14 @@ class App extends Component {
           <ProtectedRoute path="/gameroom" component={GameRoomContainer} />
           <ProtectedRoute path="/trivia" component={TriviaContainer} />
         </Switch>
-        <PCContainer />
       </div>
-    );
+        
+    </div>
+   <div>
+   <PCContainer />
+    </div>  
+    </div>
+  );
   }
 }
 
