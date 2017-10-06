@@ -36,7 +36,6 @@ class TriviaContainer extends Component {
   }
 
   render() {
-    console.log(this.props.player.spins)
     return (
       this.props.choice === 0 ? 
       <div>
