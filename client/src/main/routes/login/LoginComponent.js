@@ -16,10 +16,10 @@ class LoginComponent extends Component {
                         type="password"
                         placeholder="password" />
                     <button className="login" type="submit">Log In</button>
-                    <div className="host">
+                </form>
+                <div className="host">
                     <img className="peter-tomarken" src={require("../../../images/peter-tomarken.png")} alt="peter tomarken"/>
                     </div>
-                </form>
             </div>
         );
     }

@@ -7,8 +7,8 @@ class TriviaComponent extends Component {
       <div>
         <div className="row">
           <div className="trivia-box col-xs-10 col-xs-offset-1">
-            <h1>Category: {this.props.currentQuestion.category.name}</h1>
             <p className="question"> {this.props.currentQuestion.question} </p>
+            <h4>Category: {this.props.currentQuestion.category.name}</h4>
           </div>
         </div>
 

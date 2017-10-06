@@ -17,31 +17,30 @@ class App extends Component {
   render() {
     const isAuthenticated = this.props.isAuthenticated
     return (
-      <div>
-      <div className="site-wrapper container">
-        
-        <div className="row">
-        <Switch>
-          <Route exact path="/" render={(props)=>{
-                       return  isAuthenticated ?
-                        <Redirect to= "/gameroom"/> :
-                        <SignUpContainer {...props}/> 
-          }} />
-          <ProtectedRoute path="/gameroom" component={GameRoomContainer} />
-          <ProtectedRoute path="/trivia" component={TriviaContainer} />
-        </Switch>
+      <div className="site-wrapper container-fluid">
+        <div className="row contentRow">
+          <Switch>
+            <Route exact path="/" render={(props) => {
+              return isAuthenticated ?
+                <Redirect to="/gameroom" /> :
+                <SignUpContainer {...props} />
+            }} />
+            <ProtectedRoute path="/gameroom" component={GameRoomContainer} />
+            <ProtectedRoute path="/trivia" component={TriviaContainer} />
+          </Switch>
+        </div>
+        <div className="row footer-row">
+          <div className="player-console col-xs-8 col-xs-offset-2" >
+            <PCContainer />
+          </div>
+        </div>
       </div>
-        
-    </div>
-   <div>
-   <PCContainer />
-    </div>  
-    </div>
-  );
+
+    );
   }
 }
 
-const mapStateToProps = function(state){
+const mapStateToProps = function (state) {
   return state
 }
 

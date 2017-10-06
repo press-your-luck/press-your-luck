@@ -9,7 +9,6 @@ class GameRoomComponent extends Component {
   }
   render() {
     return (
-   
             <div className="col-md-6">
               <button onClick={this.props.handleCreate}>Create Game</button>
               <h1>Available Games:</h1>
