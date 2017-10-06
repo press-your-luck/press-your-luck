@@ -10,7 +10,7 @@ class PCContainer extends Component {
   // }
   render() {
     return (
-      <PCComponent player={this.props.user}/>
+      <PCComponent user={this.props.user} spins={this.props.player.spins}/>
       );
   }
 }
