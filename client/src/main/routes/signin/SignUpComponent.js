@@ -4,8 +4,9 @@ class SignUpComponent extends Component {
   render() {
     return (
        <div>
-            <span className="sign-up-header">Sign Up!</span>
+       
                 <form onSubmit={this.props.handleSubmit}>
+                <button  className="create-account" type="submit">CREATE ACCOUNT</button>
                     <input className="sign-in" onChange={this.props.handleChange}
                         value={this.props.inputs.username}
                         name="username"
@@ -21,7 +22,7 @@ class SignUpComponent extends Component {
                         name="email"
                         type="text"
                         placeholder="email" />
-                    <button  className="create-account" type="submit">CREATE ACCOUNT</button>
+                    
                 </form>
             </div>
     );
