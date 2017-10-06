@@ -6,6 +6,58 @@ body{
  background-size: cover;
 }
 
+.game-room{
+  text-align: center;
+}
+
+.game-room-header{
+  font-size: 10vh;
+  font-family: 'Codystar', cursive;
+  background: black;
+  border: 2px dotted #c9db84;
+  color: #c9db84;
+  display: block;
+  margin-top: 2vh;
+}
+
+.create-game{
+  background-color: #094b00;
+  border: none;
+  color: ghostwhite;
+  font-family: 'Righteous', cursive;
+  border: 2px dotted #c9db84;
+
+}
+
+.available-rooms{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  font-family: 'Righteous', cursive;
+}
+
+.next-question{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  transform: translateY(100%);
+}
+
+.next-question:hover{
+  cursor: pointer;
+}
+
+.ready{
+  font-size: 10vh;
+  font-family: 'Codystar', cursive;
+  background: black;
+  border: 2px dotted #c9db84;
+  color: #c9db84;
+  display: block;
+  margin-top: 2vh;
+  padding: 2vh;
+}
+
 .question{
   font-size: 5vh;
   text-align: center;
@@ -19,10 +71,13 @@ body{
   border: 2px dotted #c9db84;
   display: block;
   margin-top: 2vh;
+  transition: background 1s;
 }
 
 .answer:hover{
   cursor: pointer;
+  background: #094b00;
+
 }
 
 .trivia-wrapper{
@@ -37,7 +92,8 @@ body{
   padding: 2vh;
   text-align: center;
   font-family: 'Righteous', cursive;
-  color: ghostwhite;
+  color: #c9db84;
+  border: 2px dotted #c9db84;
 }
 
 .options{
@@ -52,6 +108,7 @@ body{
   font-family: 'Codystar', cursive;
   background: black;
   border: 2px dotted #c9db84;
+  margin: 2vh;
 }
 
 .create-account{
@@ -60,6 +117,7 @@ body{
   font-family: 'Codystar', cursive;
   background: black;
   border: 2px dotted #c9db84;
+  margin: 2vh;
 }
 
 .sign-up-header{
@@ -68,13 +126,12 @@ body{
   font-family: 'Codystar', cursive;
   background: black;
   border: 2px dotted #c9db84;
-
 }
+
 .peter-tomarken{
   height: 50vh;
   width: 50vh;
 }
-
 
 .joinButton {
   background-color: black;

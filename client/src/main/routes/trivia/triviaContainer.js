@@ -39,8 +39,8 @@ class TriviaContainer extends Component {
     console.log(this.props.player.spins)
     return (
       this.props.choice === 0 ?
-        <div>
-          <h3 onClick={this.handleNextQuestion}>Ready For Next Question?</h3>
+        <div className="next-question">
+          <h3 className="ready" onClick={this.handleNextQuestion}>Ready For The Next Round?</h3>
         </div> :
         <TriviaComponent
           handleAnswer={this.handleAnswer}
