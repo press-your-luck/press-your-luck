@@ -61,6 +61,12 @@ export function setGame(game) {
     }
 }
 
+export function resetChoice() {
+    return {
+        type: "RESET_CHOICE",
+    }
+}
+
 export function loadAvailableGames(games) {
     return {
         type: "LOAD_AVAILABLE_GAMES",
@@ -75,28 +81,35 @@ export function joinedGameBoolean() {
     }
 }
 
-export function loadGame(gameId){
+export function loadGame(gameId) {
     return (dispatch) => {
         axios.get(gameUrl + gameId)
             .then((response) => {
                 dispatch(setGame(response.data.game))
             })
-            .catch((err) =>{
+            .catch((err) => {
                 console.error(err);
             })
     }
 }
 
 export function loadQuestion(gameID) {
-    // return (dispatch) => {
-        return axios.put(gameUrl + "startTrivia/" + gameID)
-            .then((response) => {
-                return response.data.game
+    return axios.put(gameUrl + "startTrivia/" + gameID)
+        .then((response) => {
+            return response.data.game
+        })
+        .catch((err) => {
+            console.error(err);
+        })
+}
+
+export function nextQuestion(gameID) {
+    return (dispatch) => {
+        axios.put(gameUrl + "startTrivia/" + gameID)
+            .then((response)=>{
+                dispatch(setGame(response.data.game))
             })
-            .catch((err) => {
-                console.error(err);
-            })
-    // }
+    }
 }
 
 export function signup(credentials) {
@@ -127,40 +140,40 @@ export function login(credentials) {
 
 //passed and called in GameRoomContainer
 export function initializeGame() {
-    return (dispatch)=>{
+    return (dispatch) => {
         axios.post(gameUrl + "initialize")
-            .then((response)=>{
+            .then((response) => {
                 dispatch(getAvailableGames())
             })
-            .catch((err)=>{
+            .catch((err) => {
                 console.error(err)
             })
     }
 }
 
 //passed and called in GameRoomContainer in componentdidmount + handleCreate
-export function getAvailableGames () {
-    return (dispatch)=>{
+export function getAvailableGames() {
+    return (dispatch) => {
         axios.get(gameUrl + `?gameAvailable=true`)
-            .then((response)=>{
+            .then((response) => {
                 dispatch(loadAvailableGames(response.data.games))
             })
-            .catch((err)=>{
+            .catch((err) => {
                 console.error(err)
             })
     }
 }
 
 export function joinGame(gameId) {
-    return (dispatch)=>[
+    return (dispatch) => [
         axios.put(gameUrl + "join/" + gameId)
-            .then((response)=>{
-                loadQuestion(gameId).then((game)=>{
+            .then((response) => {
+                loadQuestion(gameId).then((game) => {
                     dispatch(setGame(game));
                     dispatch(joinedGameBoolean());
                 })
             })
-            .catch((err)=>{
+            .catch((err) => {
                 console.error(err)
             })
     ]

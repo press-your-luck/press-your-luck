@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import TriviaComponent from "./triviaComponent";
-import { loadQuestion, addSpin, useChoice } from "../../redux/actions/action.js";
+import { loadQuestion, addSpin, useChoice, nextQuestion, resetChoice } from "../../redux/actions/action.js";
 import { connect } from "react-redux";
 
 class TriviaContainer extends Component {
@@ -18,10 +18,12 @@ class TriviaContainer extends Component {
         alert("correct answer! 1 spin awarded!")
         this.props.addSpin();
         this.props.useChoice();
+        this.props.nextQuestion(this.props.currentGame._id)
         // this.handleRoundChange();
       } else {
         alert("wrong answer!");
         this.props.useChoice();
+        this.props.nextQuestion(this.props.currentGame._id);
         // this.handleRoundChange();
       }
     }
@@ -29,10 +31,20 @@ class TriviaContainer extends Component {
       alert("you have no more choices")
     }
   }
+  handleNextQuestion = () => {
+    this.props.resetChoice();
+  }
 
   render() {
+    console.log(this.props.player.spins)
     return (
-      <TriviaComponent handleAnswer={this.handleAnswer} currentQuestion={this.props.currentGame.currentQuestion} />
+      this.props.choice === 0 ? 
+      <div>
+        <h3 onClick={this.handleNextQuestion}>Ready For Next Question?</h3>
+      </div> :
+      <TriviaComponent 
+        handleAnswer={this.handleAnswer} 
+        currentQuestion={this.props.currentGame.currentQuestion} />
     );
   }
 }
@@ -41,4 +53,4 @@ const mapStateToProps = function (state) {
   return state
 }
 
-export default connect(mapStateToProps, { loadQuestion, addSpin, useChoice })(TriviaContainer);
+export default connect(mapStateToProps, { loadQuestion, addSpin, useChoice, nextQuestion, resetChoice })(TriviaContainer);
