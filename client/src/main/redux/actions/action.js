@@ -53,12 +53,6 @@ export function useChoice() {
     }
 }
 
-export function setQuestion(question) {
-    return {
-        type: "SET_QUESTION",
-        question
-    }
-}
 
 export function setGame(game) {
     return {
@@ -71,13 +65,6 @@ export function loadAvailableGames(games) {
     return {
         type: "LOAD_AVAILABLE_GAMES",
         games
-    }
-}
-
-export function chooseGame(game) {
-    return {
-        type: "CHOOSE_GAME",
-        game
     }
 }
 
@@ -169,7 +156,6 @@ export function joinGame(gameId) {
         axios.put(gameUrl + "join/" + gameId)
             .then((response)=>{
                 loadQuestion(gameId).then((game)=>{
-                    
                     dispatch(setGame(game));
                     dispatch(joinedGameBoolean());
                 })

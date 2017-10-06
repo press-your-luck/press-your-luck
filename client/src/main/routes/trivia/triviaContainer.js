@@ -13,7 +13,7 @@ class TriviaContainer extends Component {
   // }
   
   handleAnswer = (e) => {
-    if (this.props.choice == 1) {
+    if (this.props.choice === 1) {
       if (e.target.name == this.props.currentGame.currentQuestion.answers) {
         alert("correct answer! 1 spin awarded!")
         this.props.addSpin();

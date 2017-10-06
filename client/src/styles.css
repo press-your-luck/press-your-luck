@@ -4,6 +4,27 @@ body{
  background-color: black
 }
 
+.question{
+  color: ghostwhite;
+  font-family: 'Codystar', cursive;
+  font-size: 6vh;
+  text-align: center;
+}
+
+.options{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+button{
+  font-family: 'Codystar', cursive;
+  background: none;
+  border: none;
+  color: ghostwhite;
+  font-size: 3.5vh;
+}
+
 .sign-up-header{
   color: lightyellow;
   font-size: 8vh;
