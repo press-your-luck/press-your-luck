@@ -14,7 +14,17 @@ body{
 }
 
 .answer{
-  padding: 2vh;
+  color: #c9db84;
+  font-size: 6vh;
+  font-family: 'Codystar', cursive;
+  background: black;
+  border: 2px dotted #c9db84;
+  display: block;
+  margin-top: 2vh;
+}
+
+.answer:hover{
+  cursor: pointer;
 }
 
 .trivia-wrapper{
@@ -31,9 +41,8 @@ body{
 
 .options{
   margin-top: 4vh;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
+  height: 20vh;
+  text-align: center;
 }
 
 .login{
@@ -92,7 +101,11 @@ body{
 .player-console{
   height: 11vh;
   background-color: white;
-  position: absolute;
   bottom: 0;
   left: 0;
+  position: ;
 }
+.site-wrapper{
+  height: 100vh;
+}
+
