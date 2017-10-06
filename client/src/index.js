@@ -10,9 +10,9 @@ import { BrowserRouter as Router } from "react-router-dom";
 
 let store = createStore(mainReducer, applyMiddleware(thunk));
 
-store.subscribe(()=>{
-  console.log(store.getState());
-})
+// store.subscribe(()=>{
+//   console.log(store.getState());
+// })
 
 
 ReactDOM.render(<Provider store={store}><Router><App/></Router></Provider>, document.getElementById("root"));
