@@ -6,7 +6,9 @@ class PylContainer extends Component {
     return (
       <div className="container">
         <PylComponent />
-        <div className="centerConsole">Press Your Luck!</div>
+        <div className="centerConsole">
+         <img onClick={()=>{alert("working")}} className="logo" src={require("../../../images/board.jpg")} alt=""/>
+         </div>
       </div>
     );
   }

@@ -167,6 +167,7 @@ body{
   border: 5px dotted #c9db84;
   font-family: 'Codystar', cursive;
   color: ghostwhite;
+  margin-top: 2vh;
 }
 
 .footer-row {
@@ -186,16 +187,30 @@ body{
   background-color: ghostwhite;
   border: 5px solid black;
   border-radius: 15px;
+  z-index: 1;
 }
 
 .centerConsole {
   position: relative;
   bottom: 45vh;
   text-align: center;
+  height: 40vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  transform: translateY(-55%);
+  z-index: 0;
+}
+
+.logo{
+  height: 50vh;
+  width: 97vh;
+  margin-bottom: 2vh;
 }
 
 .container {
   height: 85vh;
   background-color: black;
+  
 }
 
