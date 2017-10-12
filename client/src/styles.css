@@ -180,3 +180,21 @@ body{
   height: 100%;
 }
 
+/* GAMEBOARD */
+.col-xs-2 {
+  height: 17vh;
+  background-color: ghostwhite;
+  border: 1px solid black;
+}
+
+.centerConsole {
+  position: relative;
+  bottom: 45vh;
+  text-align: center;
+}
+
+.container {
+  height: 85vh;
+  background-color: lawngreen;
+}
+

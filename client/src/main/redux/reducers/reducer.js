@@ -29,7 +29,8 @@ let defaultState = {
         playerIDs: []
     },
     availableGames: [],
-    joinedGame: false
+    joinedGame: false,
+    questionCount: 1
 
 }
 
@@ -85,6 +86,11 @@ export function mainReducer(state = defaultState, action) {
             return {
                 ...state,
                 choice: defaultState.choice
+            }
+        case "QUESTION_COUNT":
+            return {
+                ...state,
+                questionCount: state.questionCount + 1
             }
         default:
             return state
