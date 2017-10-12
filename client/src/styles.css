@@ -184,7 +184,8 @@ body{
 .col-xs-2 {
   height: 17vh;
   background-color: ghostwhite;
-  border: 1px solid black;
+  border: 5px solid black;
+  border-radius: 15px;
 }
 
 .centerConsole {
@@ -195,6 +196,6 @@ body{
 
 .container {
   height: 85vh;
-  background-color: lawngreen;
+  background-color: black;
 }
 
