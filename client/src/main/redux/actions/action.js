@@ -61,6 +61,12 @@ export function setGame(game) {
     }
 }
 
+export function questionCount() {
+    return {
+        type: "QUESTION_COUNT"
+    }
+}
+
 export function resetChoice() {
     return {
         type: "RESET_CHOICE",
@@ -108,7 +114,8 @@ export function nextQuestion(gameID) {
     return (dispatch) => {
         axios.put(gameUrl + "startTrivia/" + gameID)
             .then((response)=>{
-                dispatch(setGame(response.data.game))
+                dispatch(setGame(response.data.game));
+                dispatch(questionCount());
             })
     }
 }

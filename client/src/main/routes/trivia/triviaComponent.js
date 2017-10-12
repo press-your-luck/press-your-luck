@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 class TriviaComponent extends Component {
   render() {
-    console.log(this.props.currentQuestion)
     return (
       <div>
         <div className="row">

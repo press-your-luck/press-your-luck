@@ -4,8 +4,9 @@ import PylComponent from "./pylComponent"
 class PylContainer extends Component {
   render() {
     return (
-      <div>
+      <div className="container">
         <PylComponent />
+        <div className="centerConsole">Press Your Luck!</div>
       </div>
     );
   }
