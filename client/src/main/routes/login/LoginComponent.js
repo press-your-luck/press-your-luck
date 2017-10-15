@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
+import WOW from 'wowjs';
 
 class LoginComponent extends Component {
+    componentDidMount () {
+        new WOW.WOW().init()
+    }
     render() {
         return (
             <div>
@@ -20,7 +24,7 @@ class LoginComponent extends Component {
 
                 </form>
                 <div className="host">
-                    <img className="peter-tomarken" src={require("../../../images/peter-tomarken.png")} alt="peter tomarken" />
+                    <img className="peter-tomarken wow slideInUp" src={require("../../../images/peter-tomarken.png")} alt="peter tomarken" />
                 </div>
             </div>
         );
