@@ -29,7 +29,7 @@ class TriviaContainer extends Component {
 
   render() {
     return (
-      this.props.questionCount <= 4 ? 
+      this.props.questionCount <= 0 ? 
       this.props.choice === 0 ?
         <div className="next-question">
           <h3 className="ready" onClick={this.handleNextQuestion}>Ready For The Next Round?</h3>

@@ -7,7 +7,7 @@ class PylContainer extends Component {
     this.stopAndStart = null;
     this.state = {
       selector: [false, false, false, false, false],
-      boardOn: false
+      boardOn: false, 
     }
   }
 
@@ -26,7 +26,7 @@ class PylContainer extends Component {
   handleBoardStart = () => {
     if (this.state.boardOn === false) {
       clearInterval(this.stopAndStart)
-      this.stopAndStart = setInterval(() => { this.handleSpin() }, 70)
+      this.stopAndStart = setInterval(() => {this.handleSpin() }, 500)
       this.setState({
         ...this.state,
         boardOn: true
@@ -45,7 +45,6 @@ class PylContainer extends Component {
   }
 
   render() {
-    console.log(this.state.selector)
     return (
       <div className="container">
         <PylComponent handleBoardStop={this.handleBoardStop} {...this.state} />
