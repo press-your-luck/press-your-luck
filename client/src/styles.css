@@ -190,6 +190,10 @@ body{
   z-index: 1;
 }
 
+.col-xs-2:focus {
+  background-color: black;
+}
+
 .centerConsole {
   position: relative;
   bottom: 45vh;
@@ -216,5 +220,9 @@ body{
 
 .selector{
   border: 3px dotted yellow;
+}
+
+#focused {
+  background-color: black;
 }
 
