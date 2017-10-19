@@ -2,13 +2,56 @@ import React, { Component } from 'react';
 import PylComponent from "./pylComponent"
 
 class PylContainer extends Component {
+  constructor() {
+    super()
+    this.stopAndStart = null;
+    this.state = {
+      selector: [false, false, false, false, false],
+      boardOn: false
+    }
+  }
+
+
+  handleSpin = () => {
+    let randomNumber = [Math.floor(Math.random() * this.state.selector.length)];
+    this.setState(() => {
+      let select = [false, false, false, false, false];
+      select[randomNumber] = !select[randomNumber]
+      return {
+        selector: select
+      }
+    })
+  }
+
+  handleBoardStart = () => {
+    if (this.state.boardOn === false) {
+      clearInterval(this.stopAndStart)
+      this.stopAndStart = setInterval(() => { this.handleSpin() }, 70)
+      this.setState({
+        ...this.state,
+        boardOn: true
+      })
+    }
+  }
+
+  handleBoardStop = () => {
+    if (this.state.boardOn === true) {
+      clearInterval(this.stopAndStart)
+      this.setState({
+        ...this.state,
+        boardOn: false
+      })
+    }
+  }
+
   render() {
+    console.log(this.state.selector)
     return (
       <div className="container">
-        <PylComponent />
+        <PylComponent handleBoardStop={this.handleBoardStop} {...this.state} />
         <div className="centerConsole">
-         <img onClick={()=>{alert("working")}} className="logo" src={require("../../../images/board.jpg")} alt=""/>
-         </div>
+          <img onClick={this.handleBoardStart} className="logo" src={require("../../../images/board.jpg")} alt="" />
+        </div>
       </div>
     );
   }

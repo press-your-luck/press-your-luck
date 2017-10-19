@@ -214,3 +214,7 @@ body{
   
 }
 
+.selector{
+  border: 3px dotted yellow;
+}
+
