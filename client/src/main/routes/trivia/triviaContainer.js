@@ -28,7 +28,6 @@ class TriviaContainer extends Component {
   }
 
   render() {
-    console.log(this.props.questionCount)
     return (
       this.props.questionCount <= 4 ? 
       this.props.choice === 0 ?

@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 
 class PylComponent extends Component {
+  
   render() {
     return (
-      <div className="row">
+      <div onKeyPress={this.props.handleBoardStop} className="row">
         <div className="row topRow">
-          <button className="col-xs-2"></button>
-          <button className="col-xs-2"></button>
+          <button onKeyPress={this.props.handleBoardStop} name="0" className="col-xs-2" ></button>
+          <button name="1" className="col-xs-2"></button>
           <button className="col-xs-2"></button>
           <button className="col-xs-2"></button>
           <button className="col-xs-2"></button>
