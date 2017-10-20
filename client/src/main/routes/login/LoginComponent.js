@@ -10,8 +10,8 @@ class LoginComponent extends Component {
             <div>
                 
                 <form onSubmit={this.props.handleSubmit}>
-                <button className="login" type="submit">Log In</button>
-                    <input className="sign-in" onChange={this.props.handleChange}
+                <button className="login wow slideInLeft" type="submit">Log In</button>
+                    <input className="sign-in slideInLeft" onChange={this.props.handleChange}
                         value={this.props.inputs.username}
                         name="username"
                         type="text"

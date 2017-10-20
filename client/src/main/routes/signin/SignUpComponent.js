@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import WOW from "wowjs"
 
 class SignUpComponent extends Component {
   render() {
@@ -6,7 +7,7 @@ class SignUpComponent extends Component {
        <div>
        
                 <form onSubmit={this.props.handleSubmit}>
-                <button  className="create-account" type="submit">CREATE ACCOUNT</button>
+                <button  className="create-account wow slideInLeft" type="submit">CREATE ACCOUNT</button>
                     <input className="sign-in" onChange={this.props.handleChange}
                         value={this.props.inputs.username}
                         name="username"

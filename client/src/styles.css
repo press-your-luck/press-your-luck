@@ -1,9 +1,13 @@
 /* feel free to change this, nothing permanent */
 
-body{
+#body{
  background-color: black;
  background-image: url("https://i.ytimg.com/vi/xf7pNSLFJOI/maxresdefault.jpg");
  background-size: cover;
+}
+
+#board{
+  background-color: #5a1104;
 }
 
 .game-room{
@@ -133,6 +137,8 @@ body{
   width: 50vh;
 }
 
+
+
 .joinButton {
   background-color: black;
   width: 10vh;
@@ -163,11 +169,11 @@ body{
 .player-console{
   width: 68%;
   height: 15vh;
-  background-color: black;
-  border: 5px dotted #c9db84;
+  background-color:#1a3c1b;
+  border: 5px solid #c9db84;
   font-family: 'Codystar', cursive;
-  color: ghostwhite;
-  margin-top: 2vh;
+  color: #c9db84;
+  margin-top: 4vh;
 }
 
 .footer-row {
@@ -184,14 +190,15 @@ body{
 /* GAMEBOARD */
 .col-xs-2 {
   height: 17vh;
-  background-color: ghostwhite;
-  border: 5px solid black;
+  background-color: black;
   border-radius: 15px;
+  border: #391f0b solid 1vh;
   z-index: 1;
+  transition: border .1s, background-color .1s;
 }
 
 .col-xs-2:focus {
-  background-color: black;
+  border: 1vh dotted #c9db84;
 }
 
 .centerConsole {
@@ -213,16 +220,15 @@ body{
 }
 
 .container {
+  margin-top: 2vh;
   height: 85vh;
   background-color: black;
-  
 }
 
-.selector{
-  border: 3px dotted yellow;
-}
 
-#focused {
-  background-color: black;
+
+.whammy{
+  height: 100%;
+  width: 100%;
 }
 
