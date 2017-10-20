@@ -1,21 +1,23 @@
 import React, { Component } from 'react';
-import PylComponent from "./pylComponent"
+import PylComponent from "./pylComponent";
+import {connect} from "react-redux";
+import { addMoney, whammy, useSpin, addSpin } from "../../redux/actions/action";
 import WOW from "wowjs"
 
 class PylContainer extends Component {
   componentWillMount() {
     document.getElementById("trivia").id = "board";
-    new WOW.WOW().init()
-
+    new WOW.WOW().init();
   }
 
   constructor() {
     super()
     this.stopAndStart = null;
     this.state = {
-      selector: [1500, "whammy", false, false, false],
+      selector: [5000, "whammy", 1500, 470, 2000, 525, 750, "whammy", "whammy", 750, 5000, "whammy", "whammy", 450, 500, "whammy", 740, 1250],
       boardOn: false,
-      money: 0
+      randomNum: null,
+      choice: null
     }
   }
 
@@ -30,12 +32,14 @@ class PylContainer extends Component {
 
 
   handleSpin = () => {
-    let randomNumber = [Math.floor(Math.random() * this.state.selector.length)];
-    this.setState(() => {
-      let select = [false, false, false, false, false];
-      select[randomNumber] = !select[randomNumber]
+    this.setState((prevState) => {
+      let randomNumber = Math.floor(Math.random() * this.state.selector.length);
+      while (randomNumber === prevState.randomNum) {
+        randomNumber = Math.floor(Math.random() * this.state.selector.length);
+      }
       return {
-        selector: select
+        ...this.state,
+        randomNum: randomNumber
       }
     })
   }
@@ -51,14 +55,21 @@ class PylContainer extends Component {
     }
   }
 
-  handleBoardStop = () => {
+  handleBoardStop = (e) => {
+    e.preventDefault();
     if (this.state.boardOn === true) {
       clearInterval(this.stopAndStart)
-      this.setState({
-        ...this.state,
-        boardOn: false
+      this.setState((prevState)=>{
+        return {
+        ...prevState,
+        boardOn: false,
+        choice: prevState.selector[prevState.randomNum]
+        }
       })
+      if (this.state.choice !== "whammy") this.props.addMoney(this.state.choice);
+      else this.props.whammy();
     }
+    this.props.useSpin()
   }
 
   render() {
@@ -73,4 +84,4 @@ class PylContainer extends Component {
   }
 }
 
-export default PylContainer;
+export default connect(null, { addMoney, whammy, useSpin, addSpin })(PylContainer);

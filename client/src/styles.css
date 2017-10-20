@@ -194,8 +194,7 @@
   border: 5px solid #c9db84;
   font-family: 'Codystar', cursive;
   color: #c9db84;
-  margin-top: 2.9vh;
-  
+  margin-top: 2.9vh;  
 }
 
 .spin-count{
@@ -252,11 +251,13 @@
   background-color: black;
 }
 
-
-
 .whammy{
   height: 100%;
   width: 100%;
+}
+
+#focused {
+  border: #c9db84 dotted 1vh;
 }
 
 /* FONTS
