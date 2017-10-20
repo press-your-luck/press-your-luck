@@ -31,7 +31,8 @@ class PylComponent extends Component {
           <button
             tabIndex="11"
             name="2" className="col-xs-2"
-            ref={this.props.selector[2] ? "focused" : null} >
+            ref={this.props.selector[2] ? "focused" : null}
+            onKeyPress={this.props.handleMoney} >
             <img className="whammy" src={require("../../../images/1500bucks.png")} alt="5000 bucks" />
           </button>
           <button
@@ -39,14 +40,14 @@ class PylComponent extends Component {
             name="3"
             className="col-xs-2"
             ref={this.props.selector[3] ? "focused" : null} >
-            <img className="whammy" src={require("../../../images/750bucksred.png")} alt="1500 bucks" />
+            <img className="whammy" src={require("../../../images/470bucks.png")} alt="1500 bucks" />
           </button>
           <button
             tabIndex="7"
             name="4"
             className="col-xs-2"
             ref={this.props.selector[4] ? "focused" : null} >
-            <img className="whammy" src={require("../../../images/740bucks.png")} alt="740 bucks" />
+            <img className="whammy" src={require("../../../images/2000bucks.png")} alt="740 bucks" />
           </button>
           <button
             tabIndex="4"
@@ -59,7 +60,7 @@ class PylComponent extends Component {
           <button
             tabIndex="9"
             className="col-xs-2">
-            <img className="whammy" src={require("../../../images/2000bucksgreen.png")} alt="2000 bucks" />
+            <img className="whammy" src={require("../../../images/750bucks.png")} alt="2000 bucks" />
           </button>
           <button
             tabIndex="6"
@@ -76,7 +77,7 @@ class PylComponent extends Component {
           <button
             tabIndex="17"
             className="col-xs-2 col-xs-offset-8">
-            <img className="whammy" src={require("../../../images/2000bucks.png")} alt="2000 bucks" />
+            <img className="whammy" src={require("../../../images/750bucks.png")} alt="2000 bucks" />
           </button>
         </div>
         <div className="row fourthRow">
@@ -100,7 +101,7 @@ class PylComponent extends Component {
           <button
             tabIndex="8"
             className="col-xs-2">
-            <img className="whammy" src={require("../../../images/470bucks.png")} alt="5000 bucks" />
+            <img className="whammy" src={require("../../../images/AddaOne.png")} alt="5000 bucks" />
           </button>
           <button
             tabIndex="16"

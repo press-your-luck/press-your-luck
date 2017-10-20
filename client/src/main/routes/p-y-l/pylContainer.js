@@ -4,7 +4,7 @@ import WOW from "wowjs"
 
 class PylContainer extends Component {
   componentWillMount() {
-    document.getElementById("body").id = "board";
+    document.getElementById("trivia").id = "board";
     new WOW.WOW().init()
 
   }
@@ -15,7 +15,17 @@ class PylContainer extends Component {
     this.state = {
       selector: [false, false, false, false, false],
       boardOn: false,
+      money: 0
     }
+  }
+
+  handleMoney = () => {
+    this.setState((prevState) => {
+      return {
+        money: this.state.money + 1500
+      }
+    })
+  console.log(this.state.money)
   }
 
 
@@ -54,7 +64,7 @@ class PylContainer extends Component {
   render() {
     return (
       <div className="container wow slideInUp">
-        <PylComponent handleBoardStop={this.handleBoardStop} {...this.state} />
+        <PylComponent handleMoney={this.handleMoney} handleBoardStop={this.handleBoardStop} {...this.state} />
         <div className="centerConsole">
           <img onClick={this.handleBoardStart} className="logo" src={require("../../../images/board.jpg")} alt="" />
         </div>

@@ -5,6 +5,9 @@ import { loadQuestion, addSpin, useChoice, nextQuestion, resetChoice } from "../
 import { connect } from "react-redux";
 
 class TriviaContainer extends Component {
+  componentWillMount(){
+    document.getElementById("body").id = "trivia";
+  }
   handleAnswer = (e) => {
     if (this.props.choice === 1) {
       if (e.target.name == this.props.currentGame.currentQuestion.answers) {
@@ -29,7 +32,7 @@ class TriviaContainer extends Component {
 
   render() {
     return (
-      this.props.questionCount <= 0 ? 
+      this.props.questionCount <= 4 ? 
       this.props.choice === 0 ?
         <div className="next-question">
           <h3 className="ready" onClick={this.handleNextQuestion}>Ready For The Next Round?</h3>
