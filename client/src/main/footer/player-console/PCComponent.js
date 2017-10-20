@@ -6,7 +6,7 @@ class PCComponent extends Component {
     return (
       <div className="wow slideInUp">
         <h1 className="player">Player: {this.props.user.username}</h1>
-        <span>Spins: {this.props.spins}</span>
+        <span className="spin-count">Spins: {this.props.spins}</span>
       </div>
 
     );

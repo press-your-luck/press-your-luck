@@ -7,7 +7,20 @@
 }
 
 #board{
-  background-color: #5a1104;
+  /* background-color: #5a1104; */
+  background: orange;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to top, #ffc500, #c21500);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to top, #ffc500, #c21500); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background-repeat: no-repeat;
+  height: 103vh;
+  background-position: 0 25%;
+}
+
+#trivia{
+  background-image: url("http://s2.dmcdn.net/O9UPf/1280x720-yLz.jpg");
+  background-size: 100%;
+  background-position: 0% -3%;
+ 
 }
 
 .game-room{
@@ -68,11 +81,12 @@
 }
 
 .answer{
-  color: #c9db84;
-  font-size: 6vh;
-  font-family: 'Codystar', cursive;
-  background: black;
-  border: 2px dotted #c9db84;
+  color: ghostwhite;
+  text-shadow: 3px 3px black;
+  font-size: 4vh;
+  font-family: 'Libre Baskerville', serif;
+  background: none;
+  border: none;
   display: block;
   margin-top: 2vh;
   transition: background 1s;
@@ -80,7 +94,7 @@
 
 .answer:hover{
   cursor: pointer;
-  background: #094b00;
+  background: gray;
 
 }
 
@@ -95,15 +109,22 @@
   background-color: black;
   padding: 2vh;
   text-align: center;
-  font-family: 'Righteous', cursive;
+  font-family: 'Libre Baskerville', serif;
   color: #c9db84;
   border: 2px dotted #c9db84;
 }
 
 .options{
   margin-top: 4vh;
-  height: 20vh;
+  height: 100%;
+  padding: 2vh;
   text-align: center;
+  background: rgb(0, 0, 0);
+  opacity: .85;
+  transition: opacity .5s;
+}
+.options:hover{
+  opacity: 1
 }
 
 .login{
@@ -173,7 +194,13 @@
   border: 5px solid #c9db84;
   font-family: 'Codystar', cursive;
   color: #c9db84;
-  margin-top: 4vh;
+  margin-top: 2.9vh;
+  
+}
+
+.spin-count{
+  background-color: #724600;
+  border: 2px solid #805b20;
 }
 
 .footer-row {
@@ -231,4 +258,10 @@
   height: 100%;
   width: 100%;
 }
+
+/* FONTS
+
+font-family: 'Bitter', serif;
+font-family: 'Libre Baskerville', serif;
+font-family: 'Abril Fatface', cursive; */
 
