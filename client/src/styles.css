@@ -260,6 +260,10 @@
   border: #c9db84 dotted 1vh;
 }
 
+.audio {
+  display: none;
+}
+
 /* FONTS
 
 font-family: 'Bitter', serif;
