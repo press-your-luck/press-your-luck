@@ -13,7 +13,7 @@ class PylContainer extends Component {
     super()
     this.stopAndStart = null;
     this.state = {
-      selector: [false, false, false, false, false],
+      selector: [1500, "whammy", false, false, false],
       boardOn: false,
       money: 0
     }
@@ -63,7 +63,7 @@ class PylContainer extends Component {
 
   render() {
     return (
-      <div className="container wow slideInUp">
+      <div className="container wow slideInDown">
         <PylComponent handleMoney={this.handleMoney} handleBoardStop={this.handleBoardStop} {...this.state} />
         <div className="centerConsole">
           <img onClick={this.handleBoardStart} className="logo" src={require("../../../images/board.jpg")} alt="" />
