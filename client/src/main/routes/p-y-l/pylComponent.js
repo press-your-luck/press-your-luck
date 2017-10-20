@@ -14,7 +14,6 @@ class PylComponent extends Component {
     });
   }
   render() {
-    console.log(this.props.choice)
     return (
       <div className="row game-board">
         <form onSubmit={(e) => { this.props.handleBoardStop(e) }}>
@@ -124,7 +123,7 @@ class PylComponent extends Component {
             </button>
           </div>
           <div tabIndex="" className="row bottomRow">
-          <button
+            <button
               tabIndex="3"
               name="12"
               className="col-xs-2"
