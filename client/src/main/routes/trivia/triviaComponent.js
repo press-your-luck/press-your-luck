@@ -15,7 +15,7 @@ class TriviaComponent extends Component {
           </div>
         </div>
 
-      <div className="col-xs-8 col-xs-offset-2 options">
+      <div className="col-xs-8 col-xs-offset-2 options wow fadeInUp">
           <button className="answer col-xs-6 col-xs-offset-3 wow fadeInUp" onClick={this.props.handleAnswer} name="1">{this.props.currentQuestion.option1.toUpperCase()}</button>
           <button className="answer col-xs-6 col-xs-offset-3 wow fadeInUp" onClick={this.props.handleAnswer} name="2">{this.props.currentQuestion.option2.toUpperCase()}</button>
           <button className="answer col-xs-6 col-xs-offset-3 wow fadeInUp" onClick={this.props.handleAnswer} name="3">{this.props.currentQuestion.option3.toUpperCase()}</button>

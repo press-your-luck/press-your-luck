@@ -3,10 +3,12 @@ import TriviaComponent from "./triviaComponent";
 import PylContainer from "../p-y-l/pylContainer";
 import { loadQuestion, addSpin, useChoice, nextQuestion, resetChoice } from "../../redux/actions/action.js";
 import { connect } from "react-redux";
+import WOW from "wowjs";
 
 class TriviaContainer extends Component {
-  componentWillMount(){
+  componentDidMount(){
     document.getElementById("body").id = "trivia";
+    new WOW.WOW().init()
   }
   handleAnswer = (e) => {
     if (this.props.choice === 1) {
@@ -34,7 +36,7 @@ class TriviaContainer extends Component {
     return (
       this.props.questionCount <= 4 ? 
       this.props.choice === 0 ?
-        <div className="next-question">
+        <div className="next-question wow slideInRight">
           <h3 className="ready" onClick={this.handleNextQuestion}>Ready For The Next Round?</h3>
         </div> :
         <TriviaComponent
