@@ -1,13 +1,20 @@
 import React, { Component } from 'react';
 import PylComponent from "./pylComponent"
+import WOW from "wowjs"
 
 class PylContainer extends Component {
+  componentWillMount() {
+    document.getElementById("body").id = "board";
+    new WOW.WOW().init()
+
+  }
+
   constructor() {
     super()
     this.stopAndStart = null;
     this.state = {
       selector: [false, false, false, false, false],
-      boardOn: false, 
+      boardOn: false,
     }
   }
 
@@ -26,7 +33,7 @@ class PylContainer extends Component {
   handleBoardStart = () => {
     if (this.state.boardOn === false) {
       clearInterval(this.stopAndStart)
-      this.stopAndStart = setInterval(() => {this.handleSpin() }, 500)
+      this.stopAndStart = setInterval(() => { this.handleSpin() }, 50)
       this.setState({
         ...this.state,
         boardOn: true
@@ -46,7 +53,7 @@ class PylContainer extends Component {
 
   render() {
     return (
-      <div className="container">
+      <div className="container wow slideInUp">
         <PylComponent handleBoardStop={this.handleBoardStop} {...this.state} />
         <div className="centerConsole">
           <img onClick={this.handleBoardStart} className="logo" src={require("../../../images/board.jpg")} alt="" />

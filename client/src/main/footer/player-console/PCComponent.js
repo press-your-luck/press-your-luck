@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import WOW from "wowjs"
 
 class PCComponent extends Component {
   render() {
     return (
-      <div>
-        <h1>Player: {this.props.user.username}</h1>
+      <div className="wow slideInUp">
+        <h1 className="player">Player: {this.props.user.username}</h1>
         <span>Spins: {this.props.spins}</span>
       </div>
 
