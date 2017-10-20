@@ -47,6 +47,12 @@ export function addSpin() {
     }
 }
 
+export function useSpin() {
+    return {
+        type: "USE_SPIN"
+    }
+}
+
 export function useChoice() {
     return {
         type: "USE_CHOICE"
@@ -77,6 +83,19 @@ export function loadAvailableGames(games) {
     return {
         type: "LOAD_AVAILABLE_GAMES",
         games
+    }
+}
+
+export function addMoney(money) {
+    return {
+        type: "ADD_MONEY",
+        money
+    }
+}
+
+export function whammy() {
+    return {
+        type: "WHAMMY"
     }
 }
 
