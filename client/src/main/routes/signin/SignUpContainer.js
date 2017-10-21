@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import SignUpComponent from "./SignUpComponent.js";
 import LoginContainer from "../login/LoginContainer";
 import { connect } from "react-redux";
-
 import { Redirect } from "react-router-dom";
-
 import { signup } from "../../redux/actions/action";
+import Sound from "react-sound";
+import Theme from "../../theme-song/Theme.js"
+
 
 
 class SignUpContainer extends Component {
@@ -47,6 +48,7 @@ class SignUpContainer extends Component {
           handleChange={this.handleChange} 
           {...this.state} />
           <LoginContainer />
+            <Sound url={require("../../theme-song/Game Show Music - Press Your Luck Opening Theme (1983-1986).mp3")} playStatus={Sound.status.PLAYING} />
           </div>
 
 

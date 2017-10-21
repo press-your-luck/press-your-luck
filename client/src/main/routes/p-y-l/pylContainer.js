@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PylComponent from "./pylComponent";
-import MyComponentWithSound from "./Sound";
+import BoardOn from "./BoardOn";
 import { connect } from "react-redux";
 import { addMoney, whammy, useSpin, addSpin } from "../../redux/actions/action";
 import WOW from "wowjs";
@@ -50,17 +50,19 @@ class PylContainer extends Component {
   }
 
   handleBoardStart = () => {
-    if (this.state.boardOn === false) {
+    if (this.state.boardOn === false && this.props.player.spins > 0) {
       clearInterval(this.stopAndStart)
-      this.stopAndStart = setInterval(() => { this.handleSpin() }, 200)
+      this.stopAndStart = setInterval(() => { this.handleSpin() }, 100)
       this.setState({
         ...this.state,
         boardOn: true,
         playStatus: Sound.status.PLAYING
       })
+      } else {
+        alert("That's all the time we have! Thanks for playing Press Your Luck!!")
+      }
     }
-  }
-
+  
   handleBoardStop = (e) => {
     e.preventDefault();
     if (this.state.boardOn === true) {
@@ -94,4 +96,8 @@ class PylContainer extends Component {
   }
 }
 
-export default connect(null, { addMoney, whammy, useSpin, addSpin })(PylContainer);
+const mapStateToProps = function(state){
+  return state
+}
+
+export default connect(mapStateToProps, { addMoney, whammy, useSpin, addSpin })(PylContainer);
