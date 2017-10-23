@@ -42,7 +42,7 @@ export function mainReducer(state = defaultState, action) {
             return {
                 ...state, 
                 player: { ...state.player, 
-                spins: state.player.spins + 1}
+                spins: state.player.spins + 3}
             }
         }
         case "USE_SPIN": {
