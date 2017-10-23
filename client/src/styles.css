@@ -257,6 +257,16 @@
   z-index: 0;
 }
 
+.mayor-whammy-none{
+  display: none;
+}
+
+.mayor-whammy-show{
+  z-index: 1;
+  position: absolute;
+  height: 50vh;
+}
+
 .logo{
   height: 50vh;
   width: 97vh;

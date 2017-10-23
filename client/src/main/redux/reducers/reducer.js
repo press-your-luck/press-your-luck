@@ -14,7 +14,7 @@ let defaultState = {
     users: [],
     player : {
         money: 0,
-        spins: 0,        
+        spins: 30,        
         playerReady: false
         },
     choice: 1,
