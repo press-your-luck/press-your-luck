@@ -273,6 +273,10 @@
   margin-bottom: 2vh;
 }
 
+.logo:hover {
+  cursor: pointer;
+}
+
 .container {
   margin-top: 2vh;
   height: 85vh;

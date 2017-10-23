@@ -41,9 +41,15 @@ export function authError() {
     }
 }
 
-export function addSpin() {
+export function triviaAddSpin() {
     return {
-        type: "ADD_SPIN"
+        type: "TRIVIA_ADD_SPIN"
+    }
+}
+
+export function boardAddSpin() {
+    return {
+        type: "BOARD_ADD_SPIN"
     }
 }
 

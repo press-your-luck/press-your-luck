@@ -15,7 +15,8 @@ let defaultState = {
     player : {
         money: 0,
         spins: 30,        
-        playerReady: false
+        playerReady: false,
+        additionalSpins: 0
         },
     choice: 1,
     currentGame: {
@@ -38,11 +39,18 @@ let defaultState = {
 
 export function mainReducer(state = defaultState, action) {
     switch (action.type) {
-        case "ADD_SPIN": {
+        case "TRIVIA_ADD_SPIN": {
             return {
                 ...state, 
                 player: { ...state.player, 
                 spins: state.player.spins + 3}
+            }
+        }
+        case "BOARD_ADD_SPIN": {
+            return {
+                ...state,
+                player: { ...state.player, 
+                    spins: state.player.spins + 1}
             }
         }
         case "USE_SPIN": {

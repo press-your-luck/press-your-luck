@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import TriviaComponent from "./triviaComponent";
 import PylContainer from "../p-y-l/pylContainer";
-import { loadQuestion, addSpin, useChoice, nextQuestion, resetChoice } from "../../redux/actions/action.js";
+import { loadQuestion, triviaAddSpin, useChoice, nextQuestion, resetChoice } from "../../redux/actions/action.js";
 import { connect } from "react-redux";
 import WOW from "wowjs";
 import Sound from "react-sound";
@@ -28,7 +28,7 @@ class TriviaContainer extends Component {
       })
       if (e.target.name == this.props.currentGame.currentQuestion.answers) {
         alert("correct answer! 1 spin awarded!")
-        this.props.addSpin();
+        this.props.triviaAddSpin();
         this.props.useChoice();
         this.props.nextQuestion(this.props.currentGame._id)
       } else {
@@ -70,4 +70,4 @@ const mapStateToProps = function (state) {
   return state
 }
 
-export default connect(mapStateToProps, { loadQuestion, addSpin, useChoice, nextQuestion, resetChoice })(TriviaContainer);
+export default connect(mapStateToProps, { loadQuestion, triviaAddSpin, useChoice, nextQuestion, resetChoice })(TriviaContainer);
