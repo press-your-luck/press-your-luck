@@ -16,24 +16,20 @@ class PylContainer extends Component {
   constructor() {
     super()
     this.stopAndStart = null;
+    let whammyImg = Math.floor(Math.random() * 2)
     this.state = {
       selector: [5000, "whammy", 1500, 470, 2000, 525, 750, "whammy", "whammy", 750, 5000, "whammy", "whammy", 450, 500, "whammy", 740, 1250],
       boardOn: false,
-      playStatus: Sound.status.STOPPED,
+      boardSound: Sound.status.STOPPED,
       randomNum: null,
-      choice: null
+      choice: null,
+      whammies: 0,
+      whammySound: Sound.status.STOPPED,
+      whammyDisplay: false,
+      whammyImg: Math.floor(Math.random["../../../images/mayorWhammy", "../../../images/matadorWhammy"])
+
     }
   }
-
-  handleMoney = () => {
-    this.setState((prevState) => {
-      return {
-        money: this.state.money + 1500
-      }
-    })
-    console.log(this.state.money)
-  }
-
 
   handleSpin = () => {
     this.setState((prevState) => {
@@ -49,6 +45,13 @@ class PylContainer extends Component {
     })
   }
 
+  resetWhammy = () =>{
+    this.setState({
+      whammySound: Sound.status.STOPPED,
+      whammyDisplay: false
+    })
+  }
+
   handleBoardStart = () => {
     if (this.state.boardOn === false && this.props.player.spins > 0) {
       clearInterval(this.stopAndStart)
@@ -56,13 +59,13 @@ class PylContainer extends Component {
       this.setState({
         ...this.state,
         boardOn: true,
-        playStatus: Sound.status.PLAYING
+        boardSound: Sound.status.PLAYING
       })
-      } else {
-        alert("That's all the time we have! Thanks for playing Press Your Luck!!")
-      }
+    } else {
+      alert("That's all the time we have! Thanks for playing Press Your Luck!!")
     }
-  
+  }
+
   handleBoardStop = (e) => {
     e.preventDefault();
     if (this.state.boardOn === true) {
@@ -70,13 +73,23 @@ class PylContainer extends Component {
       this.setState((prevState) => {
         return {
           ...prevState,
-          playStatus: Sound.status.PAUSED,
+          boardSound: Sound.status.PAUSED,
           boardOn: false,
           choice: prevState.selector[prevState.randomNum]
         }
       })
-      if (this.state.choice !== "whammy") this.props.addMoney(this.state.choice);
-      else this.props.whammy();
+      if (this.state.choice !== "whammy") {
+        this.props.addMoney(this.state.choice);
+      } else {
+        this.props.whammy();
+        this.setState((prevState) => {
+          return {
+            whammies: prevState.whammies + 1,
+            whammySound: Sound.status.PLAYING,
+            whammyDisplay: true
+          }
+        })
+      }
     }
     this.props.useSpin()
   }
@@ -87,16 +100,19 @@ class PylContainer extends Component {
         <PylComponent handleMoney={this.handleMoney} handleBoardStop={this.handleBoardStop} {...this.state} />
         <div className="centerConsole">
           <img onClick={this.handleBoardStart} className="logo" src={require("../../../images/board.jpg")} alt="" />
+          <img className={this.state.whammyDisplay ? "mayor-whammy-show wow slideOutLeft" : "mayor-whammy-none"} src={require("../../../images/matadorWhammy.png")} alt=""/>
         </div>
-        <div className={this.state.boardOn ? "audioBoardOn" : "audioBoardOff"}>
-          <Sound url="http://www.qwizx.com/gssfx/usa/pylbord2.wav" playStatus={this.state.playStatus}/>
+        <div>
+        <Sound url="http://www.qwizx.com/gssfx/usa/pylbord2.wav" playStatus={this.state.boardSound} />
+        <Sound url="http://www.qwizx.com/gssfx/usa/pyl-whammy.wav" playStatus={this.state.whammySound} onFinishedPlaying={this.resetWhammy} />
         </div>
       </div>
     );
   }
 }
 
-const mapStateToProps = function(state){
+
+const mapStateToProps = function (state) {
   return state
 }
 
