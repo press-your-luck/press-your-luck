@@ -52,7 +52,7 @@ class PylContainer extends Component {
   handleBoardStart = () => {
     if (this.state.boardOn === false && this.props.player.spins > 0) {
       clearInterval(this.stopAndStart)
-      this.stopAndStart = setInterval(() => { this.handleSpin() }, 100)
+      this.stopAndStart = setInterval(() => { this.handleSpin() }, 150)
       this.setState({
         ...this.state,
         boardOn: true,

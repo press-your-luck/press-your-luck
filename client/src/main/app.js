@@ -30,7 +30,7 @@ class App extends Component {
           </Switch>
         </div>
         <div className="row footer-row">
-          <div className="player-console col-xs-8 col-xs-offset-2" >
+          <div className="player-console col-xs-offset-1 col-xs-10" >
             <PCContainer />
           </div>
         </div>
