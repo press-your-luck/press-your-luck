@@ -108,6 +108,14 @@ export function mainReducer(state = defaultState, action) {
                 player: { ...state.player, 
                     money: state.player.money + action.money}
             }
+        case "ADD_A_ONE": {
+            return {
+                ...state,
+                player: {...state.player,
+                    money: action.money 
+                }
+            }
+        }
         case "WHAMMY":
             return {
                 ...state,

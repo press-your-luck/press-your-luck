@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PylComponent from "./pylComponent";
 import BoardOn from "./BoardOn";
 import { connect } from "react-redux";
-import { addMoney, whammy, useSpin, addSpin } from "../../redux/actions/action";
+import { addMoney, whammy, useSpin, addSpin, specialSquare } from "../../redux/actions/action";
 import WOW from "wowjs";
 import Sound from "react-sound";
 
@@ -35,7 +35,7 @@ class PylContainer extends Component {
     const whammyTwo = require("../../../images/whammy2.png"); 1,1, 2, 2,3
     const whammyThree = require("../../../images/whammy3.png"); 1,1, 2, 2, 3
     this.state = {
-      selector: [[5000, 1250, "whammy"], ["whammy", 5000, 750], [1500, "whammy", 740], [470, 750, "whammy"], [2000, "whammy", 525], [525, 500, "whammy"], [750, "whammy", 5000], ["whammy", 470, 500], ["whammy", 500, 1250], [750, "whammy", 5000], [5000, 5000, "whammy"], ["whammy", 2000, 500], ["whammy", 750, 2000], [500, "whammy", 750], [500, 1500, "whammy"], ["whammy", 740, 470], [740, 525, "whammy"], [1250, "whammy", 1500]],
+      selector: [[5000, 1250, "whammy"], ["whammy", 5000, 750], [1500, "whammy", 740], [470, 750, "whammy"], [2000, "whammy", 525], [525, "add-a-one", "whammy"], [750, "whammy", 5000], ["whammy", 470, "add-a-one"], ["whammy", 500, 1250], [750, "whammy", 5000], [5000, 5000, "whammy"], ["whammy", 2000, 500], ["whammy", 750, 2000], ["add-a-one", "whammy", 750], [500, 1500, "whammy"], ["whammy", 740, 470], [740, 525, "whammy"], [1250, "whammy", 1500]],
       boardOn: false,
       boardSound: Sound.status.STOPPED,
       randomNum: null,
@@ -125,12 +125,14 @@ class PylContainer extends Component {
           ...prevState,
           boardSound: Sound.status.PAUSED,
           boardOn: false,
-          choice: prevState.selector[prevState.randomNum][prevState.imgRandom]
+          choice: prevState.selector[5][1]
         }
       })
-      if (this.state.choice !== "whammy") {
+      if (this.state.choice !== "whammy" && this.state.choice !== "add-a=one") {
         this.props.addMoney(this.state.choice);
-      } else {
+      } else if (this.state.choice == "add-a-one"){
+        this.props.specialSquare(this.props.player.money);
+      } else if (this.state.choice == "whammy") {
         this.props.whammy();
         this.setState((prevState) => {
           return {
@@ -166,4 +168,4 @@ const mapStateToProps = function (state) {
   return state
 }
 
-export default connect(mapStateToProps, { addMoney, whammy, useSpin, addSpin })(PylContainer);
+export default connect(mapStateToProps, { addMoney, whammy, useSpin, addSpin, specialSquare })(PylContainer);
