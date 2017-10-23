@@ -16,6 +16,7 @@ class PylContainer extends Component {
   constructor() {
     super()
     this.stopAndStart = null;
+    this.squareChange = null;
     let whammyImg = Math.floor(Math.random() * 2)
     this.state = {
       selector: [5000, "whammy", 1500, 470, 2000, 525, 750, "whammy", "whammy", 750, 5000, "whammy", "whammy", 450, 500, "whammy", 740, 1250],
@@ -26,9 +27,13 @@ class PylContainer extends Component {
       whammies: 0,
       whammySound: Sound.status.STOPPED,
       whammyDisplay: false,
-      whammyImg: Math.floor(Math.random["../../../images/mayorWhammy", "../../../images/matadorWhammy"])
+      whammyImg: ["https://i.pinimg.com/originals/ff/f4/6d/fff46d47a2753801ac4ce778745f4f25.png", "http://www.playpressyourluck.com/assets/mayorWhammy.png"]
 
     }
+  }
+
+  handleSquareChange = () => {
+
   }
 
   handleSpin = () => {
@@ -37,7 +42,6 @@ class PylContainer extends Component {
       while (randomNumber === prevState.randomNum) {
         randomNumber = Math.floor(Math.random() * this.state.selector.length);
       }
-      console.log(prevState.randomNum)
       return {
         ...this.state,
         randomNum: randomNumber
@@ -45,7 +49,7 @@ class PylContainer extends Component {
     })
   }
 
-  resetWhammy = () =>{
+  resetWhammy = () => {
     this.setState({
       whammySound: Sound.status.STOPPED,
       whammyDisplay: false
@@ -100,11 +104,11 @@ class PylContainer extends Component {
         <PylComponent handleMoney={this.handleMoney} handleBoardStop={this.handleBoardStop} {...this.state} />
         <div className="centerConsole">
           <img onClick={this.handleBoardStart} className="logo" src={require("../../../images/board.jpg")} alt="" />
-          <img className={this.state.whammyDisplay ? "mayor-whammy-show wow slideOutLeft" : "mayor-whammy-none"} src={require("../../../images/matadorWhammy.png")} alt=""/>
+          <img className={this.state.whammyDisplay ? "mayor-whammy-show wow slideOutLeft" : "mayor-whammy-none"} src={this.state.whammyImg[Math.floor(Math.random() * this.state.whammyImg.length)]} alt="" />
         </div>
         <div>
-        <Sound url="http://www.qwizx.com/gssfx/usa/pylbord2.wav" playStatus={this.state.boardSound} />
-        <Sound url="http://www.qwizx.com/gssfx/usa/pyl-whammy.wav" playStatus={this.state.whammySound} onFinishedPlaying={this.resetWhammy} />
+          <Sound url="http://www.qwizx.com/gssfx/usa/pylbord2.wav" playStatus={this.state.boardSound} />
+          <Sound url="http://www.qwizx.com/gssfx/usa/pyl-whammy.wav" playStatus={this.state.whammySound} onFinishedPlaying={this.resetWhammy} />
         </div>
       </div>
     );
