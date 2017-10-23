@@ -93,6 +93,13 @@ export function addMoney(money) {
     }
 }
 
+export function addAOne(money) {
+    return {
+        type: "ADD_A_ONE",
+        money
+    }
+}
+
 export function whammy() {
     return {
         type: "WHAMMY"
@@ -103,6 +110,15 @@ export function whammy() {
 export function joinedGameBoolean() {
     return {
         type: "JOINED_GAME_BOOLEAN",
+    }
+}
+
+export function specialSquare(money) {
+    return (dispatch) => {
+        let str = money.toString();
+        str = "1" + str;
+        let finished = parseInt(str);
+        dispatch(addAOne(finished));
     }
 }
 
@@ -132,7 +148,7 @@ export function loadQuestion(gameID) {
 export function nextQuestion(gameID) {
     return (dispatch) => {
         axios.put(gameUrl + "startTrivia/" + gameID)
-            .then((response)=>{
+            .then((response) => {
                 dispatch(setGame(response.data.game));
                 dispatch(questionCount());
             })
