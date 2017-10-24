@@ -296,6 +296,17 @@
   display: none;
 }
 
+.volumeIcon {
+  height: 10vh;
+  position: absolute;
+  right: 10vw;
+  bottom: 2vh;
+}
+
+.volumeIcon:hover {
+  cursor: pointer;
+}
+
 /* FONTS
 
 font-family: 'Bitter', serif;

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import TriviaComponent from "./triviaComponent";
 import PylContainer from "../p-y-l/pylContainer";
-import { loadQuestion, triviaAddSpin, useChoice, nextQuestion, resetChoice } from "../../redux/actions/action.js";
+import { loadQuestion, triviaAddSpin, useChoice, nextQuestion, resetChoice, buzzInAudio } from "../../redux/actions/action.js";
 import { connect } from "react-redux";
 import WOW from "wowjs";
 import Sound from "react-sound";
@@ -14,23 +14,18 @@ class TriviaContainer extends Component {
       playStatus: Sound.status.PAUSED
     }
   }
-
   componentDidMount() {
     document.getElementById("body").id = "trivia";
     new WOW.WOW().init()
   }
   handleAnswer = (e) => {
     if (this.props.choice === 1) {
-      this.setState((prevState) => {
-        return {
-          playStatus: Sound.status.PLAYING
-        }
-      })
+      this.props.buzzInAudio();
       if (e.target.name == this.props.currentGame.currentQuestion.answers) {
         alert("correct answer! 1 spin awarded!")
         this.props.triviaAddSpin();
         this.props.useChoice();
-        this.props.nextQuestion(this.props.currentGame._id)
+        this.props.nextQuestion(this.props.currentGame._id);
       } else {
         let answerArray = [this.props.currentGame.currentQuestion.option1, this.props.currentGame.currentQuestion.option2, this.props.currentGame.currentQuestion.option3, this.props.currentGame.currentQuestion.option4];
         alert(`WRONG! SAD! The Correct Answer Is: ${answerArray[this.props.currentGame.currentQuestion.answers - 1]}`);
@@ -48,7 +43,7 @@ class TriviaContainer extends Component {
 
   render() {
     return (
-      this.props.questionCount <= 1 ?
+      this.props.questionCount <= 4 ?
         this.props.choice === 0 ?
           <div className="next-question wow slideInRight">
             <h3 className="ready wow slideInRight" onClick={this.handleNextQuestion}>Ready For The Next Round?</h3>
@@ -57,6 +52,7 @@ class TriviaContainer extends Component {
             <TriviaComponent
               handleAnswer={this.handleAnswer}
               currentQuestion={this.props.currentGame.currentQuestion}
+              gameSounds={this.props.gameSounds}
               {...this.state} />
           </div> :
         <PylContainer />
@@ -70,4 +66,4 @@ const mapStateToProps = function (state) {
   return state
 }
 
-export default connect(mapStateToProps, { loadQuestion, triviaAddSpin, useChoice, nextQuestion, resetChoice })(TriviaContainer);
+export default connect(mapStateToProps, { loadQuestion, triviaAddSpin, useChoice, nextQuestion, resetChoice, buzzInAudio })(TriviaContainer);

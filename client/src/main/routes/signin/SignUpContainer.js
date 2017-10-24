@@ -48,7 +48,7 @@ class SignUpContainer extends Component {
           handleChange={this.handleChange} 
           {...this.state} />
           <LoginContainer />
-            <Sound url={require("../../theme-song/Game Show Music - Press Your Luck Opening Theme (1983-1986).mp3")} playStatus={Sound.status.PLAYING} />
+            <Sound url={require("../../../Theme/Game Show Music - Press Your Luck Opening Theme (1983-1986).mp3")} playStatus={this.props.gameSounds.muted ? Sound.status.PAUSED : Sound.status.PLAYING} />
           </div>
 
 
