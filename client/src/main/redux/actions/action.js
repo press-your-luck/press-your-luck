@@ -119,6 +119,18 @@ export function joinedGameBoolean() {
     }
 }
 
+export function muteControl() {
+    return {
+        type: "MUTE_CONTROL"
+    }
+}
+
+export function buzzInAudio() {
+    return {
+        type: "BUZZ_IN_AUDIO"
+    }
+}
+
 export function specialSquare(money) {
     return (dispatch) => {
         let str = money.toString();

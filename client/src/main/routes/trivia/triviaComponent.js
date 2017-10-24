@@ -23,7 +23,7 @@ class TriviaComponent extends Component {
           <button className="answer col-xs-6 col-xs-offset-3 wow fadeInUp" onClick={this.props.handleAnswer} name="3">{this.props.currentQuestion.option3.toUpperCase()}</button>
           <button className="answer col-xs-6 col-xs-offset-3 wow fadeInUp" onClick={this.props.handleAnswer} name="4">{this.props.currentQuestion.option4.toUpperCase()}</button>
       </div>
-      <Sound url={"http://www.qwizx.com/gssfx/usa/pyl-buzz-in.wav"} playStatus={this.props.playStatus} />
+      <Sound url={this.props.gameSounds.buzzIn.url} playStatus={this.props.gameSounds.muted ? Sound.status.STOPPED : this.props.gameSounds.buzzIn.status} />
     </div>
 
     );

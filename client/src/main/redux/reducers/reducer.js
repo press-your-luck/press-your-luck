@@ -1,3 +1,5 @@
+import Sound from "react-sound";
+
 let defaultState = {
     isAuthenticated : false,
     user : {
@@ -32,7 +34,22 @@ let defaultState = {
     },
     availableGames: [],
     joinedGame: false,
-    questionCount: 1
+    questionCount: 1, 
+    gameSounds: {
+        muted: false,
+        boardActive: {
+            url: "http://www.qwizx.com/gssfx/usa/pylbord2.wav",
+            status: Sound.status.STOPPED
+        },
+        whammyChosen: {
+            url: "http://www.qwizx.com/gssfx/usa/pyl-whammy.wav",
+            status: Sound.status.STOPPED
+        },
+        buzzIn: {
+            url: "http://www.qwizx.com/gssfx/usa/pyl-buzz-in.wav",
+            status: Sound.status.STOPPED
+        }
+    }
 
 }
 
@@ -129,6 +146,25 @@ export function mainReducer(state = defaultState, action) {
                 ...state,
                 player: { ...state.player,
                     money: 0
+                }
+            }
+        case "MUTE_CONTROL":
+            return {
+                ...state,
+                gameSounds: {
+                    ...state.gameSounds,
+                    muted: !state.gameSounds.muted,
+                }
+            }
+        case "BUZZ_IN_AUDIO":
+            return {
+                ...state,
+                gameSounds: {
+                    ...state.gameSounds,
+                    buzzIn: {
+                        ...state.gameSounds.buzzIn,
+                        status: Sound.status.PLAYING
+                    }
                 }
             }
         default:

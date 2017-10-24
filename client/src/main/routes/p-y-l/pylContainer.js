@@ -11,7 +11,6 @@ class PylContainer extends Component {
     document.getElementById("trivia").id = "board";
     new WOW.WOW().init();
   }
-
   constructor() {
     super()
     this.stopAndStart = null;
@@ -127,8 +126,8 @@ class PylContainer extends Component {
       } else {
         this.props.addMoney(this.state.choice);
       }
+      this.props.useSpin()
     }
-    this.props.useSpin()
   }
 
   render() {
