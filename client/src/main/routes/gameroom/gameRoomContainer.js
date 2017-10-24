@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 import { initializeGame, getAvailableGames } from "../../redux/actions/action";
 import { Redirect } from "react-router-dom";
 import Sound from "react-sound";
-import Theme from "../../theme-song/Theme.js"
 
 class GameRoomContainer extends Component {
   componentWillMount() {

@@ -5,7 +5,6 @@ import { loadQuestion, triviaAddSpin, useChoice, nextQuestion, resetChoice, buzz
 import { connect } from "react-redux";
 import WOW from "wowjs";
 import Sound from "react-sound";
-import BuzzIn from "../trivia/trivia-sounds/Buzz-In.js";
 
 class TriviaContainer extends Component {
   constructor() {

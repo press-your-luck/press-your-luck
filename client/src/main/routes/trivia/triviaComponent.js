@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import WOW from "wowjs"
 import Sound from "react-sound";
-import BuzzIn from "../trivia/trivia-sounds/Buzz-In.js";
+
 
 class TriviaComponent extends Component {
   componentDidMount () {

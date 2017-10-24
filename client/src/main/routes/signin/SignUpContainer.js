@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { signup } from "../../redux/actions/action";
 import Sound from "react-sound";
-import Theme from "../../theme-song/Theme.js"
+
 
 
 
