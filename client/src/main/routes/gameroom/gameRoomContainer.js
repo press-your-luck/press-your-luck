@@ -6,7 +6,7 @@ import { Redirect } from "react-router-dom";
 import Sound from "react-sound";
 
 class GameRoomContainer extends Component {
-  componentWillMount() {
+  componentDidMount() {
     this.props.getAvailableGames();
   }
   handleCreate = () => {
@@ -14,6 +14,7 @@ class GameRoomContainer extends Component {
     this.props.getAvailableGames();
   }
   render() {
+    console.log(this.props.joinedGame)
     return (
       this.props.joinedGame ?
         <Redirect to="/trivia" /> :

@@ -386,6 +386,14 @@
   
 }
 
+.finalStats {
+  font-size: 12vh;
+  font-family: 'Anton', sans-serif;
+  color: ghostwhite;
+  text-shadow: 3px 3px black;
+  text-align: center;
+}
+
 .goodnight-sweet-prince{
   display: flex;
   flex-direction: row;
