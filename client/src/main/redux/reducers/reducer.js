@@ -16,7 +16,7 @@ let defaultState = {
     users: [],
     player : {
         money: 0,
-        spins: 30,        
+        spins: 0,        
         playerReady: false,
         additionalSpins: 0
         },
@@ -79,6 +79,15 @@ export function mainReducer(state = defaultState, action) {
                 }
             }
         }
+        case "PASS_SPINS": {
+            return {
+                ...state,
+                player: {
+                    ...state.player,
+                    spins: state.player.spins = 0
+                }
+            }
+        }
         case "USE_CHOICE" : {
             return {
                 ...state, 
@@ -131,7 +140,8 @@ export function mainReducer(state = defaultState, action) {
             return {
                 ...state,
                 player: { ...state.player, 
-                    money: state.player.money + action.money}
+                    money: state.player.money + action.money
+                }
             }
         case "ADD_A_ONE": {
             return {

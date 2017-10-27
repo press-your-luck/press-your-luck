@@ -28,7 +28,7 @@ class PylComponent extends Component {
               className="col-xs-2 whammy-one"
               id={this.props.randomNum === 1 ? "focused" : null} >
               <img className="whammy" src={`${this.props.rowImages[1][this.props.imgRandom]}`} alt="whammy" />
-              Ï</button>
+              </button>
             <button
               name="2"
               className="col-xs-2"
