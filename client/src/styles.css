@@ -394,6 +394,25 @@
   text-align: center;
 }
 
+.playAgain {
+  width: 30vw;
+  text-align: center;
+  font-size: 10vh;
+  font-family: 'Codystar', cursive;
+  background: black;
+  border: 2px dotted #c9db84;
+}
+
+.playAgain a {
+  color: #c9db84;
+}
+
+.playAgainWrap {
+display: flex;
+flex-direction: row;
+justify-content: center;
+}
+
 .goodnight-sweet-prince{
   display: flex;
   flex-direction: row;

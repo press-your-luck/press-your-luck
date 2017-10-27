@@ -7,6 +7,7 @@ import Sound from "react-sound";
 
 class GameRoomContainer extends Component {
   componentDidMount() {
+    document.body.id = "body";
     this.props.getAvailableGames();
   }
   handleCreate = () => {

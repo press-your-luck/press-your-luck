@@ -270,7 +270,6 @@ export function playAgain(gameId) {
         axios.delete(gameUrl + gameId)
             .then((response)=>{
                 dispatch(gameReset());
-                dispatch(loadAvailableGames(response.data.game));
             })
             .catch((err)=>{
                 console.error(err)
