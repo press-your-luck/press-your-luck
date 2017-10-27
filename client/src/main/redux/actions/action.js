@@ -59,6 +59,12 @@ export function useSpin() {
     }
 }
 
+export function passSpins(){
+    return {
+        type: "PASS_SPINS"
+    }
+}
+
 export function useChoice() {
     return {
         type: "USE_CHOICE"

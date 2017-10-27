@@ -8,7 +8,6 @@ class MuteContainer extends Component {
     this.props.muteControl()
         }
   render() {
-    console.log(this.props.gameSounds)
     return (
       <div>
         <MuteComponent handleMute={this.handleMute} muteBoolean={this.props.gameSounds.muted}/>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import TriviaComponent from "./triviaComponent";
 import PylContainer from "../p-y-l/pylContainer";
-import { loadQuestion, triviaAddSpin, useChoice, nextQuestion, resetChoice, buzzInAudio } from "../../redux/actions/action.js";
+import { loadQuestion, triviaAddSpin, useChoice, nextQuestion, resetChoice, buzzInAudio, boardAddSpin } from "../../redux/actions/action.js";
 import { connect } from "react-redux";
 import WOW from "wowjs";
 import Sound from "react-sound";
@@ -9,22 +9,59 @@ import Sound from "react-sound";
 class TriviaContainer extends Component {
   constructor() {
     super()
+    this.bestAnswer = null;
+    this.timer = null;
     this.state = {
-      playStatus: Sound.status.PAUSED
+      // bonus: true,
+      timeLeft: 5,
+      
     }
   }
   componentDidMount() {
     document.getElementById("body").id = "trivia";
     new WOW.WOW().init()
+    this.handleTime()
+
   }
+
+  // handleBonus = () => {
+  //   this.setState({
+  //     bonus: false
+  //   })
+  // }
+
+  handleClock = () => {
+    if (this.state.timeLeft === 0){
+      clearInterval(this.timer)
+    } else {
+    this.setState((prevState) =>{
+      return {
+        timeLeft: prevState.timeLeft - 1
+      }
+    })
+  }
+}
+
+  handleTime = () => {
+    clearTimeout(this.bestanswer);
+    clearInterval(this.timer);
+    this.timer = setInterval(() => {this.handleClock()}, 1000)
+  }
+  
   handleAnswer = (e) => {
     if (this.props.choice === 1) {
-      this.props.buzzInAudio();
       if (e.target.name == this.props.currentGame.currentQuestion.answers) {
-        alert("correct answer! 1 spin awarded!")
-        this.props.triviaAddSpin();
-        this.props.useChoice();
-        this.props.nextQuestion(this.props.currentGame._id);
+        if (this.state.timeLeft > 0){
+          alert("correct answer! You answered in time! 3 spins awarded!")
+          this.props.triviaAddSpin();
+          this.props.useChoice();
+          this.props.nextQuestion(this.props.currentGame._id);
+        } else {
+          alert("correct answer!  You get a spin!")
+          this.props.boardAddSpin();
+          this.props.useChoice();
+          this.props.nextQuestion(this.props.currentGame._id);
+        }
       } else {
         let answerArray = [this.props.currentGame.currentQuestion.option1, this.props.currentGame.currentQuestion.option2, this.props.currentGame.currentQuestion.option3, this.props.currentGame.currentQuestion.option4];
         alert(`WRONG! SAD! The Correct Answer Is: ${answerArray[this.props.currentGame.currentQuestion.answers - 1]}`);
@@ -36,8 +73,26 @@ class TriviaContainer extends Component {
       alert("you have no more choices")
     }
   }
+  
   handleNextQuestion = () => {
+    clearInterval(this.timer)
     this.props.resetChoice();
+    this.resetTimer();
+    this.handleTime();
+    
+  }
+
+  // resetBonus = () => {
+  //   this.setState({
+  //     bonus: true
+  //   })
+  // }
+
+  resetTimer = () => {
+    clearInterval(this.timer)
+    this.setState({
+      timeLeft: this.state.timeLeft = 5
+    })
   }
 
   render() {
@@ -65,4 +120,4 @@ const mapStateToProps = function (state) {
   return state
 }
 
-export default connect(mapStateToProps, { loadQuestion, triviaAddSpin, useChoice, nextQuestion, resetChoice, buzzInAudio })(TriviaContainer);
+export default connect(mapStateToProps, { loadQuestion, triviaAddSpin, useChoice, nextQuestion, resetChoice, buzzInAudio, boardAddSpin })(TriviaContainer);
