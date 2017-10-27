@@ -79,6 +79,13 @@ export function setGame(game) {
     }
 }
 
+export function gameId(id) {
+    return {
+        type: "GAME_ID",
+        id
+    }
+}
+
 export function questionCount() {
     return {
         type: "QUESTION_COUNT"
@@ -134,6 +141,18 @@ export function muteControl() {
 export function buzzInAudio() {
     return {
         type: "BUZZ_IN_AUDIO"
+    }
+}
+
+export function gameReset() {
+    return {
+        type: "GAME_RESET"
+    }
+}
+
+export function resetJoinGameBoolean() {
+    return {
+        type: "RESET_JOIN_GAME_BOOLEAN"
     }
 }
 
@@ -244,6 +263,18 @@ export function joinGame(gameId) {
                 console.error(err)
             })
     ]
+}
+
+export function playAgain(gameId) {
+    return (dispatch) => {
+        axios.delete(gameUrl + gameId)
+            .then((response)=>{
+                dispatch(gameReset());
+            })
+            .catch((err)=>{
+                console.error(err)
+            })
+    }
 }
 
 

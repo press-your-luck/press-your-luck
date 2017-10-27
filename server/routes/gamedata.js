@@ -49,6 +49,19 @@ gameRoute.route("/join/:id")
         })
     })
 
+gameRoute.route("/:id")
+    .delete((req, res)=>{
+        gameModel.findByIdAndRemove(req.params.id, (err, game)=>{
+            if (err) {
+                res.status(500).send(err)
+            } else if (game === null) {
+                res.status(404).send({message: "ID NOT FOUND", data: null})
+            } else {
+                res.status(200).send({message: "GAME DELETED", data: game})
+            }
+        })
+    })
+
 gameRoute.route("/startTrivia/:id")
     .put((req, res) => {
         axios.get(`https://qriusity.com/v1/questions?page=${Math.floor(Math.random() * 17904)}&limit=1`)
@@ -68,5 +81,7 @@ gameRoute.route("/startTrivia/:id")
                     })
             })
     })
+
+
 
 module.exports = gameRoute;

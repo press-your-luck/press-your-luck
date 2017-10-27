@@ -8,8 +8,8 @@ import ThanksForPlaying from "../thanks-for-playing/thanks-for-playing.js"
 
 
 class PylContainer extends Component {
-  componentWillMount() {
-    document.getElementById("trivia").id = "board";
+  componentDidMount() {
+    document.body.id = "board";
     new WOW.WOW().init();
   }
   constructor() {

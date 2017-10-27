@@ -30,13 +30,14 @@ let defaultState = {
             option4: "",
             answers: 0
         },
-        playerIDs: []
+        playerIDs: [],
     },
+    gameId: "",
     availableGames: [],
     joinedGame: false,
     questionCount: 1, 
     gameSounds: {
-        muted: false,
+        muted: true,
         boardActive: {
             url: "http://www.qwizx.com/gssfx/usa/pylbord2.wav",
             status: Sound.status.STOPPED
@@ -116,6 +117,11 @@ export function mainReducer(state = defaultState, action) {
                 ...state,
                 currentGame: action.game
             }
+        case "GAME_ID":
+            return {
+                ...state,
+                gameId: action.id
+            }
         case "LOAD_AVAILABLE_GAMES":
             return {
                 ...state,
@@ -176,6 +182,51 @@ export function mainReducer(state = defaultState, action) {
                         status: Sound.status.PLAYING
                     }
                 }
+            }
+        case "GAME_RESET":
+            return {
+                ...state,
+                player : {
+                    money: 0,
+                    spins: 0,        
+                    playerReady: false,
+                    additionalSpins: 0
+                    },
+                choice: 1,
+                currentGame: {
+                    currentQuestion: {
+                        question: "",
+                        option1: "",
+                        option2: "",
+                        option3: "",
+                        option4: "",
+                        answers: 0
+                    },
+                    playerIDs: [],
+                },
+                gameId: "",
+                joinedGame: false,
+                questionCount: 1, 
+                gameSounds: {
+                    muted: true,
+                    boardActive: {
+                        url: "http://www.qwizx.com/gssfx/usa/pylbord2.wav",
+                        status: Sound.status.STOPPED
+                    },
+                    whammyChosen: {
+                        url: "http://www.qwizx.com/gssfx/usa/pyl-whammy.wav",
+                        status: Sound.status.STOPPED
+                    },
+                    buzzIn: {
+                        url: "http://www.qwizx.com/gssfx/usa/pyl-buzz-in.wav",
+                        status: Sound.status.STOPPED
+                    }
+                }
+            }
+        case "RESET_JOIN_GAME_BOOLEAN":
+            return {
+                ...state,
+                joinedGame: false
             }
         default:
             return state

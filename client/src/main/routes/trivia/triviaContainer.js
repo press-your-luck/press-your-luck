@@ -12,23 +12,15 @@ class TriviaContainer extends Component {
     this.bestAnswer = null;
     this.timer = null;
     this.state = {
-      // bonus: true,
       timeLeft: 5,
       
     }
   }
   componentDidMount() {
-    document.getElementById("body").id = "trivia";
-    new WOW.WOW().init()
+    document.body.id = "trivia";
+    new WOW.WOW().init();
     this.handleTime()
-
   }
-
-  // handleBonus = () => {
-  //   this.setState({
-  //     bonus: false
-  //   })
-  // }
 
   handleClock = () => {
     if (this.state.timeLeft === 0){
