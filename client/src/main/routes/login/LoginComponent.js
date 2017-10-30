@@ -24,7 +24,7 @@ class LoginComponent extends Component {
 
                 </form>
                 <div className="host">
-                    <img className="peter-tomarken wow slideInUp" src={require("../../../images/peter-tomarken.png")} alt="peter tomarken" />
+                    <img className="peter-tomarken wow slideInUp" src={"https://i.imgur.com/YB2IbrO.png"} alt="peter tomarken" />
                 </div>
             </div>
         );

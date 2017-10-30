@@ -8,9 +8,9 @@ axios.interceptors.request.use((config) => {
     return Promise.reject(err)
 })
 
-const authUrl = "http://localhost:9000/auth/";
-const profileUrl = "http://localhost:9000/player/";
-const gameUrl = "http://localhost:9000/game/";
+const authUrl = "/auth/";
+const profileUrl = "/player/";
+const gameUrl = "/game/";
 
 export function verifyToken() {
     return (dispatch) => {

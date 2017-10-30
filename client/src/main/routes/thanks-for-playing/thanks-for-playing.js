@@ -23,7 +23,7 @@ class ThanksForPlaying extends Component {
                     <h1 className="goodbye">THANKS FOR PLAYING!!!</h1>
                 </div>
                 <h3 className="finalStats">You Won: ${this.props.player.money}!</h3>
-                <img className="peter-tomarken-goodbye" src={require("../../../images/peter-tomarken.png")} alt="" />
+                <img className="peter-tomarken-goodbye" src={"https://i.imgur.com/YB2IbrO.png"} alt="" />
                 <div className="playAgainWrap">
                     <div onClick={() => { this.handleEndGame(this.props.gameId) }} className="playAgain"><Link to="/gameroom">Play Again?</Link></div>
                 </div>
